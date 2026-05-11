@@ -1,4 +1,4 @@
-import { Header } from "./Header";
+import { MarketingHeader } from "@/components/marketing/MarketingHeader";
 import { HeroSection } from "./HeroSection";
 import { ProblemSection } from "./ProblemSection";
 import { BeforeAfterSection } from "./BeforeAfterSection";
@@ -11,6 +11,7 @@ import { AudienceSection } from "./AudienceSection";
 import { ProcessSection } from "./ProcessSection";
 import { UseCasesSection } from "./UseCasesSection";
 import { LiveMockupsSection } from "./LiveMockupsSection";
+import { BackOfficeSection } from "./BackOfficeSection";
 import { TrustSection } from "./TrustSection";
 import { PricingSection } from "./PricingSection";
 import { FAQSection } from "./FAQSection";
@@ -22,7 +23,7 @@ import { ScrollReveal } from "./ScrollReveal";
 export default function LandingPage() {
   return (
     <div className="page" id="top">
-      <Header />
+      <MarketingHeader />
       <HeroSection />
       <ProblemSection />
       <BeforeAfterSection />
@@ -35,6 +36,7 @@ export default function LandingPage() {
       <ProcessSection />
       <UseCasesSection />
       <LiveMockupsSection />
+      <BackOfficeSection />
       <TrustSection />
       <PricingSection />
       <FAQSection />

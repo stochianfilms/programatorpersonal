@@ -9,7 +9,7 @@ export default function Header() {
           href="/"
           className="text-sm font-semibold uppercase tracking-[0.24em]"
         >
-          {siteConfig.name}
+          {siteConfig.brand.name}
         </Link>
         <nav className="hidden gap-6 text-sm text-text-muted md:flex">
           {siteConfig.navigation.marketing.map(({ label, href }) => (

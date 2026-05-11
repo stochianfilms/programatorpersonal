@@ -5,6 +5,7 @@ import { Arrow } from "./atoms/Icons";
 import { DashboardMockupView } from "./mockups/DashboardMockup";
 import { ServiceTicketMockupView } from "./mockups/ServiceTicketMockup";
 import { TasksMockupView } from "./mockups/TasksMockup";
+import { siteConfig } from "@/content/site";
 
 type HeroView = "dashboard" | "service" | "tasks";
 type HeroViewContextValue = { requestedView: HeroView; requestView: (v: HeroView) => void };
@@ -296,8 +297,8 @@ export function HeroSection() {
             Construim aplicații web, CRM-uri, automatizări și platforme interne pentru firme care vor să lucreze mai clar, mai rapid și mai organizat. Tu spui problema, eu propun soluția.
           </p>
           <div className="pp-hero-ctas reveal reveal-4">
-            <a href="#contact" className="btn btn-primary">
-              Spune-mi ce vrei să construim <Arrow />
+            <a href={siteConfig.ctas.diagnostic.href} className="btn btn-primary">
+              {siteConfig.ctas.diagnostic.label} <Arrow />
             </a>
             <a href="#use-cases" className="btn btn-secondary">
               Vezi ce putem automatiza

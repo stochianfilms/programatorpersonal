@@ -1,11 +1,80 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { MarketingShell } from "./MarketingShell";
 import { FaqAccordion } from "./FaqAccordion";
 import { ServiceContactForm } from "./ServiceContactForm";
 import { services, type ServiceConfig } from "@/data/services";
-import { ServiceVisual } from "./ServiceVisual";
 import { siteConfig } from "@/content/site";
-import { getServiceMedia } from "@/lib/media";
+import {
+  ArchitectureMapMockup,
+  BookingCalendarMockup,
+  BusinessOSMockup,
+  ClientPortalMockup,
+  ContractGeneratorMockup,
+  Customer360Mockup,
+  EcommerceOpsMockup,
+  EmailToTicketMockup,
+  MaintenanceCenterMockup,
+  OperationsDashboardMockup,
+  ReportsDashboardMockup,
+} from "@/components/marketing/mockups";
+
+const serviceMockups: Record<string, { eyebrow: string; title: string; lead: string; visuals: ReactNode[] }> = {
+  "crm-custom": {
+    eyebrow: "crm operațional",
+    title: "Un CRM construit în jurul clientului, nu al unui tabel.",
+    lead: "Customer 360, tickete, produse, comenzi și emailuri transformate în lucru urmărit.",
+    visuals: [<Customer360Mockup key="customer" />, <EmailToTicketMockup key="email" />],
+  },
+  "automatizari-business": {
+    eyebrow: "automatizări business",
+    title: "Procese care pornesc singure din evenimente reale.",
+    lead: "Un email, formular sau status poate crea ticket, aloca responsabil, porni SLA și pregăti răspunsul.",
+    visuals: [<EmailToTicketMockup key="email" />, <BusinessOSMockup key="os" />],
+  },
+  "aplicatii-web-custom": {
+    eyebrow: "arhitectură aplicație",
+    title: "Aplicația poate fi modulară de la început.",
+    lead: "Frontend, logică, date, roluri, integrări și automatizări într-o arhitectură care poate crește.",
+    visuals: [<ArchitectureMapMockup key="architecture" />],
+  },
+  "generator-contracte": {
+    eyebrow: "documente automate",
+    title: "Contracte generate din date curate, nu din copy-paste.",
+    lead: "Template-uri, clauze, date client, previzualizare și PDF pregătit pentru semnare.",
+    visuals: [<ContractGeneratorMockup key="contracts" />],
+  },
+  "dashboard-rapoarte": {
+    eyebrow: "date și management",
+    title: "Dashboard-uri pentru decizii, nu doar grafice decorative.",
+    lead: "Rapoarte programate, KPI operaționali și indicatori de status pentru management.",
+    visuals: [<ReportsDashboardMockup key="reports" />, <OperationsDashboardMockup key="ops" />],
+  },
+  "platforma-rezervari": {
+    eyebrow: "calendar rezervări",
+    title: "Programările devin un sistem, nu o conversație.",
+    lead: "Sloturi, responsabili, reminder-uri, confirmări și no-show tracking într-un calendar clar.",
+    visuals: [<BookingCalendarMockup key="booking" />],
+  },
+  "portal-clienti": {
+    eyebrow: "portal client",
+    title: "Clientul vede singur statusul, documentele și mesajele.",
+    lead: "Un spațiu privat pentru documente, facturi, progres și conversații organizate.",
+    visuals: [<ClientPortalMockup key="portal" />],
+  },
+  "magazin-online-custom": {
+    eyebrow: "operațiuni e-commerce",
+    title: "Magazinul online poate controla și operațiunile din spate.",
+    lead: "Comenzi, stoc, retururi, AWB-uri, facturare și sincronizări într-un flux coerent.",
+    visuals: [<EcommerceOpsMockup key="ecommerce" />],
+  },
+  "mentenanta-software": {
+    eyebrow: "mentenanță software",
+    title: "Mentenanța devine vizibilă: status, backup, intervenții și securitate.",
+    lead: "Monitoring, deploy-uri, backup-uri, certificate și istoricul intervențiilor într-un centru clar.",
+    visuals: [<MaintenanceCenterMockup key="maintenance" />],
+  },
+};
 
 const Arrow = () => (
   <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -32,9 +101,10 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
     .filter(Boolean);
   const primaryCta = service.primaryCta ?? siteConfig.ctas.serviceDefault;
   const secondaryCta = service.secondaryCta ?? siteConfig.ctas.portfolio;
-  const serviceMedia = getServiceMedia(service);
   const visibleProblems = service.problems.slice(0, 3);
   const extraProblems = service.problems.slice(3);
+  const mockupSet = serviceMockups[service.slug];
+  const heroMockup = mockupSet?.visuals[0];
 
   const processSteps = [
     { n: "01", t: "Discutăm problema", d: "O conversație de 30 de minute. Tu îmi spui ce nu funcționează, eu pun întrebări." },
@@ -57,6 +127,7 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.4 }} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div
+            className="pp-visual-hero-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "1fr auto",
@@ -98,12 +169,35 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
             </div>
 
             {/* Service visual mockup */}
-            <div className="pp-only-desktop">
-              <ServiceVisual visual={service.visual} caption={serviceMedia.caption} />
-            </div>
+            {heroMockup && (
+              <div className="pp-only-desktop" style={{ width: "min(540px, 44vw)" }}>
+                {heroMockup}
+              </div>
+            )}
           </div>
         </div>
       </section>
+
+      {mockupSet && (
+        <section className="section" style={{ paddingTop: "var(--s-7)", paddingBottom: "var(--s-7)" }}>
+          <div className="container">
+            <div className="section-head" style={{ marginBottom: "var(--s-6)" }}>
+              <div className="eyebrow-row">
+                <span className="num">00</span>
+                <span className="eyebrow">{mockupSet.eyebrow}</span>
+                <span className="line" />
+              </div>
+              <h2 className="h-1">{mockupSet.title}</h2>
+              <p className="lead" style={{ margin: 0, maxWidth: 720 }}>{mockupSet.lead}</p>
+            </div>
+            <div style={{ display: "grid", gap: "var(--s-5)" }}>
+              {mockupSet.visuals.map((visual, index) => (
+                <div key={index}>{visual}</div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Problems */}
       <section className="section" style={{ background: "var(--bg-1)" }}>

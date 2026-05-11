@@ -20,8 +20,8 @@ export interface MediaItem {
 
 const primaryNav: NavItem[] = [
   { label: "Servicii", href: "/servicii" },
-  { label: "Soluții", href: "/servicii" },
-  { label: "Industrii", href: "/servicii" },
+  { label: "Soluții", href: "/solutii" },
+  { label: "Industrii", href: "/industrii" },
   { label: "Portofoliu", href: "/portofoliu" },
   { label: "Prețuri", href: "/preturi" },
   { label: "Contact", href: "/contact" },

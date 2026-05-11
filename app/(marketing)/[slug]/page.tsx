@@ -4,6 +4,8 @@ import { services } from "@/data/services";
 import { problemPages } from "@/data/problemPages";
 import { industryPages } from "@/data/industryPages";
 import { ServicePage } from "@/components/marketing/ServicePage";
+import { ProblemPage } from "@/components/marketing/ProblemPage";
+import { IndustryPage } from "@/components/marketing/IndustryPage";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -72,13 +74,11 @@ export default async function SlugPage({ params }: Props) {
   }
 
   if (problemPages[slug]) {
-    // Sprint 3: ProblemPage component
-    notFound();
+    return <ProblemPage problem={problemPages[slug]} />;
   }
 
   if (industryPages[slug]) {
-    // Sprint 4: IndustryPage component
-    notFound();
+    return <IndustryPage industry={industryPages[slug]} />;
   }
 
   notFound();

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { siteConfig } from '@/content/site';
 
 interface ServiceCardProps {
   slug: string;
@@ -47,7 +48,7 @@ export function ServiceCard({
           </span>
         )}
         <Link href={`/servicii/${slug}`}>
-          <Button variant="outline">Learn More</Button>
+          <Button variant="outline">{siteConfig.ctas.serviceDefault.label}</Button>
         </Link>
       </CardFooter>
     </Card>

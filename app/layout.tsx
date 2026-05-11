@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { fontVariables } from "@/lib/fonts";
+import { siteConfig } from "@/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Programator Personal",
-  description: "Website pentru servicii software, clienți și proiecte.",
+  title: siteConfig.brand.name,
+  description: siteConfig.brand.description,
 };
 
 export default function RootLayout({

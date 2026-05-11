@@ -244,7 +244,7 @@ export function MarketingHeader() {
                   setMobileSection((prev) => (prev === key ? null : key))
                 }
               >
-                {key}
+                {megaData[key].label}
                 <Chevron open={mobileSection === key} />
               </button>
               {mobileSection === key && (

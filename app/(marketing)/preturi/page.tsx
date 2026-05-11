@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { siteConfig } from "@/content/site";
+import { PricingComplexityMockup } from "@/components/marketing/mockups";
 
 export const metadata: Metadata = {
   title: "Prețuri | Programator Personal",
   description: "Prețuri orientative pentru proiecte software custom — site-uri, CRM, automatizări și platforme complexe.",
-  alternates: { canonical: "https://programatorpersonal.ro/preturi" },
+  alternates: { canonical: `${siteConfig.url}/preturi` },
 };
 
 const Arrow = () => (
@@ -100,13 +102,34 @@ export default function PreturiPage() {
       <section style={{ paddingTop: "calc(var(--s-10) + 40px)", paddingBottom: "var(--s-8)", position: "relative" }}>
         <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.35 }} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="chip" style={{ marginBottom: "var(--s-4)" }}>investiție orientativă</div>
-          <h1 className="h-display" style={{ maxWidth: 680, fontSize: "clamp(32px, 5vw, 64px)", marginBottom: "var(--s-4)" }}>
-            Cât costă, în mare.
-          </h1>
-          <p className="lead" style={{ maxWidth: 560, color: "var(--fg-2)" }}>
-            Nu e grilă fixă. Sunt 3 forme de colaborare în care intră majoritatea proiectelor. Prețul final îl stabilim împreună, după ce înțelegem exact ce ai nevoie.
-          </p>
+          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(360px, 540px)", gap: "var(--s-8)", alignItems: "start" }}>
+            <div>
+              <div className="chip" style={{ marginBottom: "var(--s-4)" }}>investiție orientativă</div>
+              <h1 className="h-display" style={{ maxWidth: 680, fontSize: "clamp(32px, 5vw, 64px)", marginBottom: "var(--s-4)" }}>
+                Cât costă, în mare.
+              </h1>
+              <p className="lead" style={{ maxWidth: 560, color: "var(--fg-2)" }}>
+                Nu e grilă fixă. Sunt 3 forme de colaborare în care intră majoritatea proiectelor. Prețul final îl stabilim împreună, după ce înțelegem exact ce ai nevoie.
+              </p>
+            </div>
+            <div className="pp-only-desktop">
+              <PricingComplexityMockup />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing complexity visual */}
+      <section className="section" style={{ paddingTop: "var(--s-7)", paddingBottom: "var(--s-7)" }}>
+        <div className="container">
+          <div className="section-head" style={{ marginBottom: "var(--s-6)" }}>
+            <div className="eyebrow-row">
+              <span className="eyebrow">cum se calculează prețul</span>
+              <span className="line" />
+            </div>
+            <h2 className="h-2">Modulele alese determină prețul. Nu pachetele fixe.</h2>
+          </div>
+          <PricingComplexityMockup />
         </div>
       </section>
 
@@ -148,7 +171,7 @@ export default function PreturiPage() {
           <div className="pp-pricing-foot">
             <span className="mono" style={{ fontSize: 13, color: "var(--fg-3)" }}>nu te încadrezi într-un pachet?</span>
             <Link href="/contact" className="btn btn-ghost">
-              Cere o estimare personalizată <Arrow />
+              {siteConfig.ctas.estimate.label} <Arrow />
             </Link>
           </div>
         </div>

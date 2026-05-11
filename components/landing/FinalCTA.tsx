@@ -1,4 +1,5 @@
 import { Arrow } from "./atoms/Icons";
+import { siteConfig } from "@/content/site";
 
 export function FinalCTA() {
   return (
@@ -21,11 +22,11 @@ export function FinalCTA() {
               Spune-mi ce vrei să rezolvi. Îți pot propune o variantă simplă, clară și realistă de implementare. Fără audit de 2 săptămâni. Fără propunere de 40 de pagini.
             </p>
             <div className="pp-final-ctas">
-              <a href="mailto:hai@programatorpersonal.ro" className="btn btn-primary">
-                Începem cu o discuție <Arrow />
+              <a href={siteConfig.ctas.primary.href} className="btn btn-primary">
+                {siteConfig.ctas.primary.label} <Arrow />
               </a>
-              <a href="#" className="btn btn-secondary">
-                hai@programatorpersonal.ro
+              <a href={`mailto:${siteConfig.contact.email}`} className="btn btn-secondary">
+                {siteConfig.contact.email}
               </a>
             </div>
             <div className="pp-final-meta">
@@ -34,13 +35,9 @@ export function FinalCTA() {
                 <div className="pp-final-meta-v">L-V · 09:00 — 19:00</div>
               </div>
               <div>
-                <div className="eyebrow">apel direct</div>
-                <div className="pp-final-meta-v mono">+40 7XX XXX XXX</div>
-              </div>
-              <div>
-                <div className="eyebrow">capacitate luna</div>
+                <div className="eyebrow">răspuns</div>
                 <div className="pp-final-meta-v">
-                  <span style={{ color: "var(--accent)" }}>2 sloturi</span> disponibile
+                  în 24h, în zilele lucrătoare
                 </div>
               </div>
             </div>

@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
+import {
+  Customer360Mockup,
+  ReportsDashboardMockup,
+  BookingCalendarMockup,
+  EcommerceOpsMockup,
+  ServiceTicketDashboardMockup,
+} from "@/components/marketing/mockups";
 
 export const metadata: Metadata = {
   title: "Portofoliu | Programator Personal",
@@ -14,271 +21,11 @@ const Arrow = () => (
   </svg>
 );
 
-/* ── Inline CSS-mockup widgets ── */
-
-const PipelineMockup = () => (
-  <div
-    style={{
-      background: "var(--bg-0)",
-      border: "1px solid var(--line-1)",
-      borderRadius: "var(--r-3)",
-      padding: "var(--s-5)",
-      fontFamily: "var(--font-mono)",
-    }}
-  >
-    <div style={{ fontSize: 11, color: "var(--fg-4)", marginBottom: "var(--s-4)" }}>
-      pipeline vânzări · live
-    </div>
-    {[
-      { label: "Lead nou", count: 23, pct: 100, color: "var(--fg-4)" },
-      { label: "Ofertă trimisă", count: 15, pct: 65, color: "var(--fg-3)" },
-      { label: "Negociere", count: 8, pct: 35, color: "var(--accent)" },
-      { label: "Câștigat", count: 5, pct: 22, color: "var(--accent)" },
-    ].map((row) => (
-      <div key={row.label} style={{ marginBottom: "var(--s-3)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, marginBottom: 4 }}>
-          <span style={{ color: "var(--fg-3)" }}>{row.label}</span>
-          <span style={{ color: "var(--fg-2)" }}>{row.count}</span>
-        </div>
-        <div style={{ height: 6, background: "var(--bg-2)", borderRadius: 3 }}>
-          <div
-            style={{
-              height: "100%",
-              width: `${row.pct}%`,
-              background: row.color === "var(--accent)"
-                ? "var(--accent)"
-                : "rgba(255,255,255,0.12)",
-              borderRadius: 3,
-            }}
-          />
-        </div>
-      </div>
-    ))}
-    <div
-      style={{
-        marginTop: "var(--s-4)",
-        padding: "var(--s-3)",
-        background: "var(--accent-soft)",
-        border: "1px solid var(--accent-line)",
-        borderRadius: "var(--r-2)",
-        fontSize: 12,
-      }}
-    >
-      <span style={{ color: "var(--accent)" }}>↑ 18%</span>{" "}
-      <span style={{ color: "var(--fg-2)" }}>lead-uri vs luna trecută</span>
-    </div>
-  </div>
-);
-
-const AutomationMockup = () => (
-  <div
-    style={{
-      background: "var(--bg-0)",
-      border: "1px solid var(--line-1)",
-      borderRadius: "var(--r-3)",
-      padding: "var(--s-5)",
-      fontFamily: "var(--font-mono)",
-    }}
-  >
-    <div style={{ fontSize: 11, color: "var(--fg-4)", marginBottom: "var(--s-4)" }}>
-      flux automatizat · rapoarte lunare
-    </div>
-    {[
-      { step: "01", label: "Extrage date din sistem", status: "done" },
-      { step: "02", label: "Generează PDF personalizat", status: "done" },
-      { step: "03", label: "Trimite pe email clienți", status: "running" },
-      { step: "04", label: "Arhivează în Drive", status: "pending" },
-    ].map((s) => (
-      <div
-        key={s.step}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "var(--s-3)",
-          padding: "var(--s-3) 0",
-          borderBottom: "1px solid var(--line-1)",
-        }}
-      >
-        <span style={{ color: "var(--fg-4)", fontSize: 11, minWidth: 20 }}>{s.step}</span>
-        <span style={{ flex: 1, fontSize: 12, color: "var(--fg-2)" }}>{s.label}</span>
-        <span
-          style={{
-            fontSize: 10,
-            padding: "2px 8px",
-            borderRadius: "var(--r-pill)",
-            background:
-              s.status === "done"
-                ? "var(--accent-soft)"
-                : s.status === "running"
-                  ? "rgba(255,200,0,0.1)"
-                  : "var(--bg-2)",
-            color:
-              s.status === "done"
-                ? "var(--accent)"
-                : s.status === "running"
-                  ? "#e0b800"
-                  : "var(--fg-4)",
-            border: `1px solid ${
-              s.status === "done"
-                ? "var(--accent-line)"
-                : s.status === "running"
-                  ? "rgba(255,200,0,0.2)"
-                  : "var(--line-2)"
-            }`,
-          }}
-        >
-          {s.status === "done" ? "✓ gata" : s.status === "running" ? "● rulează" : "○ urmează"}
-        </span>
-      </div>
-    ))}
-    <div style={{ marginTop: "var(--s-4)", fontSize: 12, color: "var(--fg-3)" }}>
-      Rulat automat <span style={{ color: "var(--accent)" }}>1 iun 2026, 08:00</span>
-    </div>
-  </div>
-);
-
-const BookingMockup = () => (
-  <div
-    style={{
-      background: "var(--bg-0)",
-      border: "1px solid var(--line-1)",
-      borderRadius: "var(--r-3)",
-      padding: "var(--s-5)",
-      fontFamily: "var(--font-mono)",
-    }}
-  >
-    <div style={{ fontSize: 11, color: "var(--fg-4)", marginBottom: "var(--s-4)" }}>
-      calendar programări · săptămâna curentă
-    </div>
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(5, 1fr)",
-        gap: 4,
-        marginBottom: "var(--s-4)",
-      }}
-    >
-      {["Lun", "Mar", "Mie", "Joi", "Vin"].map((d) => (
-        <div key={d} style={{ textAlign: "center", fontSize: 10, color: "var(--fg-4)", marginBottom: 4 }}>
-          {d}
-        </div>
-      ))}
-      {[
-        [1,1,0,1,0],
-        [0,1,1,0,1],
-        [1,0,1,1,0],
-        [1,1,0,0,1],
-        [0,1,1,1,0],
-        [1,0,0,1,1],
-      ].flatMap((row, ri) =>
-        row.map((occupied, ci) => (
-          <div
-            key={`${ri}-${ci}`}
-            style={{
-              height: 20,
-              borderRadius: "var(--r-1)",
-              background: occupied
-                ? "var(--accent)"
-                : "var(--bg-2)",
-              border: `1px solid ${occupied ? "var(--accent-line)" : "var(--line-1)"}`,
-              opacity: occupied ? 0.8 : 0.4,
-            }}
-          />
-        ))
-      )}
-    </div>
-    <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11 }}>
-      <span style={{ color: "var(--fg-3)" }}>Ocupat</span>
-      <span style={{ color: "var(--accent)" }}>22 programări</span>
-    </div>
-    <div
-      style={{
-        marginTop: "var(--s-3)",
-        padding: "var(--s-3)",
-        background: "var(--accent-soft)",
-        border: "1px solid var(--accent-line)",
-        borderRadius: "var(--r-2)",
-        fontSize: 12,
-        color: "var(--accent)",
-      }}
-    >
-      ↓ 60% no-show față de luna anterioară
-    </div>
-  </div>
-);
-
-const StockMockup = () => (
-  <div
-    style={{
-      background: "var(--bg-0)",
-      border: "1px solid var(--line-1)",
-      borderRadius: "var(--r-3)",
-      padding: "var(--s-5)",
-      fontFamily: "var(--font-mono)",
-    }}
-  >
-    <div style={{ fontSize: 11, color: "var(--fg-4)", marginBottom: "var(--s-4)" }}>
-      gestiune stoc · multi-depozit
-    </div>
-    {[
-      { sku: "PRD-001", name: "Produs A", stoc: 142, status: "ok" },
-      { sku: "PRD-002", name: "Produs B", stoc: 8, status: "low" },
-      { sku: "PRD-003", name: "Produs C", stoc: 0, status: "out" },
-      { sku: "PRD-004", name: "Produs D", stoc: 55, status: "ok" },
-    ].map((row) => (
-      <div
-        key={row.sku}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "var(--s-3)",
-          padding: "var(--s-3) 0",
-          borderBottom: "1px solid var(--line-1)",
-        }}
-      >
-        <span style={{ fontSize: 10, color: "var(--fg-4)", minWidth: 52 }}>{row.sku}</span>
-        <span style={{ flex: 1, fontSize: 12, color: "var(--fg-2)" }}>{row.name}</span>
-        <span
-          style={{
-            fontSize: 12,
-            fontWeight: 500,
-            color:
-              row.status === "out"
-                ? "var(--danger)"
-                : row.status === "low"
-                  ? "#e0b800"
-                  : "var(--fg-1)",
-          }}
-        >
-          {row.stoc}
-        </span>
-        <span
-          style={{
-            width: 6,
-            height: 6,
-            borderRadius: "50%",
-            background:
-              row.status === "out"
-                ? "var(--danger)"
-                : row.status === "low"
-                  ? "#e0b800"
-                  : "var(--accent)",
-          }}
-        />
-      </div>
-    ))}
-    <div style={{ marginTop: "var(--s-4)", fontSize: 12, color: "var(--fg-3)" }}>
-      <span style={{ color: "var(--danger)" }}>1 produs</span> epuizat ·{" "}
-      <span style={{ color: "#e0b800" }}>1 produs</span> critic
-    </div>
-  </div>
-);
-
 const caseStudies = [
   {
     tag: "CRM custom",
-    industry: "Agenție imobiliară · 8 angajați",
-    title: "CRM cu pipeline de vânzări și follow-up automat",
+    industry: "Atlas Imobiliare · 8 angajați",
+    title: "CRM cu vedere completă client și follow-up automat",
     problem: "Lead-uri pierdute în inbox și WhatsApp. Nimeni nu știa care ofertă e în ce stadiu.",
     result: "Zero lead-uri pierdute din prima lună. Timp de răspuns la contacte: sub 2 ore.",
     stats: [
@@ -286,24 +33,24 @@ const caseStudies = [
       { val: "0", label: "lead-uri pierdute" },
       { val: "6 săpt.", label: "livrat în" },
     ],
-    Mockup: PipelineMockup,
+    Mockup: Customer360Mockup,
   },
   {
-    tag: "Automatizări",
-    industry: "Firmă de contabilitate · 5 angajați",
-    title: "Automatizarea rapoartelor lunare și notificărilor clienți",
-    problem: "Fiecare contabil pierdea 3h/lună să genereze manual rapoartele și să trimită emailuri.",
+    tag: "Automatizări & Rapoarte",
+    industry: "Nova Service · 5 angajați",
+    title: "Dashboard live și rapoarte automate lunare",
+    problem: "Fiecare angajat pierdea 3h/lună să genereze manual rapoartele și să trimită emailuri.",
     result: "Rapoartele se trimit singure în prima zi lucrătoare. 15h economisite lunar.",
     stats: [
       { val: "15h", label: "economisite/lună" },
       { val: "0", label: "erori de trimitere" },
       { val: "4 săpt.", label: "livrat în" },
     ],
-    Mockup: AutomationMockup,
+    Mockup: ReportsDashboardMockup,
   },
   {
     tag: "Platformă rezervări",
-    industry: "Clinică medicală · 12 medici",
+    industry: "Clinica Atlas · 12 medici",
     title: "Platformă de programări online cu reminder-uri automate",
     problem: "Programări pe WhatsApp, 30% no-show, secretara ocupată 4h/zi cu telefoane.",
     result: "No-show redus cu 60%. Programări 24/7 fără intervenție umană.",
@@ -312,20 +59,20 @@ const caseStudies = [
       { val: "24/7", label: "disponibil" },
       { val: "5 săpt.", label: "livrat în" },
     ],
-    Mockup: BookingMockup,
+    Mockup: BookingCalendarMockup,
   },
   {
-    tag: "Aplicație internă",
-    industry: "Distribuitor en-gros · 20 angajați",
+    tag: "E-commerce",
+    industry: "ShopNova · 20 angajați",
     title: "Sistem de gestiune comenzi și stoc în timp real",
-    problem: "Stoc pe foi Excel, comenzi trimise greșit, sincronizare cu furnizori durând 2 zile.",
+    problem: "Stoc pe foi Excel, comenzi procesate manual, AWB-uri generate individual.",
     result: "Erori de comandă eliminate. Stocul e vizibil live pentru toată echipa.",
     stats: [
       { val: "0", label: "erori comenzi" },
       { val: "live", label: "stoc vizibil" },
       { val: "8 săpt.", label: "livrat în" },
     ],
-    Mockup: StockMockup,
+    Mockup: EcommerceOpsMockup,
   },
 ];
 
@@ -342,20 +89,27 @@ export default function PortofoliuPage() {
       >
         <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.35 }} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="chip" style={{ marginBottom: "var(--s-4)" }}>proiecte livrate</div>
-          <h1
-            className="h-display"
-            style={{
-              maxWidth: 700,
-              fontSize: "clamp(32px, 5vw, 64px)",
-              marginBottom: "var(--s-4)",
-            }}
-          >
-            Ce am construit și ce rezultate a produs.
-          </h1>
-          <p className="lead" style={{ maxWidth: 560, color: "var(--fg-2)" }}>
-            Fiecare proiect de mai jos a pornit de la o problemă concretă și a livrat rezultate măsurabile în primele 30 de zile de utilizare.
-          </p>
+          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(360px, 540px)", gap: "var(--s-8)", alignItems: "start" }}>
+            <div>
+              <div className="chip" style={{ marginBottom: "var(--s-4)" }}>proiecte livrate</div>
+              <h1
+                className="h-display"
+                style={{
+                  maxWidth: 700,
+                  fontSize: "clamp(32px, 5vw, 64px)",
+                  marginBottom: "var(--s-4)",
+                }}
+              >
+                Ce am construit și ce rezultate a produs.
+              </h1>
+              <p className="lead" style={{ maxWidth: 560, color: "var(--fg-2)" }}>
+                Fiecare proiect de mai jos a pornit de la o problemă concretă și a livrat rezultate măsurabile în primele 30 de zile de utilizare.
+              </p>
+            </div>
+            <div className="pp-only-desktop">
+              <ServiceTicketDashboardMockup />
+            </div>
+          </div>
         </div>
       </section>
 

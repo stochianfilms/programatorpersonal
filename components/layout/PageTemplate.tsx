@@ -21,8 +21,8 @@ export function PageTemplate({ hero, sections = [], cta }: PageTemplateProps) {
   return (
     <MarketingShell>
       {hero}
-      {sections.map((section) => (
-        <section key={section.id || Math.random()} className="section">
+      {sections.map((section, index) => (
+        <section key={section.id ?? `section-${index}`} className="section">
           {section.component}
         </section>
       ))}

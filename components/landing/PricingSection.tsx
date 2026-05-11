@@ -1,5 +1,6 @@
 import { SectionHead } from "./atoms/SectionHead";
 import { Check, Arrow } from "./atoms/Icons";
+import { siteConfig } from "@/content/site";
 
 const tiers = [
   {
@@ -83,7 +84,7 @@ export function PricingSection() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className={`btn ${t.featured ? "btn-primary" : "btn-secondary"} pp-tier-cta`}>
+              <a href={siteConfig.ctas.estimate.href} className={`btn ${t.featured ? "btn-primary" : "btn-secondary"} pp-tier-cta`}>
                 {t.cta} <Arrow />
               </a>
             </div>
@@ -91,8 +92,8 @@ export function PricingSection() {
         </div>
         <div className="pp-pricing-foot">
           <span className="mono" style={{ fontSize: 13, color: "var(--fg-3)" }}>nu te încadrezi într-un pachet?</span>
-          <a href="#contact" className="btn btn-ghost">
-            Cere o estimare personalizată <Arrow />
+          <a href={siteConfig.ctas.estimate.href} className="btn btn-ghost">
+            {siteConfig.ctas.estimate.label} <Arrow />
           </a>
         </div>
       </div>

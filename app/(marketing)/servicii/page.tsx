@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
+import { siteConfig } from "@/content/site";
+import { BusinessOSMockup } from "@/components/marketing/mockups";
 
 export const metadata: Metadata = {
   title: "Servicii | Programator Personal",
   description: "Software custom pentru firme din România — CRM, automatizări, aplicații web, magazine online și mentenanță.",
-  alternates: { canonical: "https://programatorpersonal.ro/servicii" },
+  alternates: { canonical: `${siteConfig.url}/servicii` },
 };
 
 const Arrow = () => (
@@ -84,18 +86,39 @@ export default function ServiciiPage() {
       <section style={{ paddingTop: "calc(var(--s-10) + 40px)", paddingBottom: "var(--s-8)", position: "relative" }}>
         <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.35 }} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="chip" style={{ marginBottom: "var(--s-4)" }}>
-            <span className="dot pulse-dot" /> disponibil pentru proiecte noi
+          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(360px, 540px)", gap: "var(--s-8)", alignItems: "start" }}>
+            <div>
+              <div className="chip" style={{ marginBottom: "var(--s-4)" }}>
+                <span className="dot pulse-dot" /> disponibil pentru proiecte noi
+              </div>
+              <h1 className="h-display" style={{ maxWidth: 700, fontSize: "clamp(32px, 5vw, 64px)", marginBottom: "var(--s-4)" }}>
+                Software custom pentru firma ta.
+              </h1>
+              <p className="lead" style={{ maxWidth: 580, color: "var(--fg-2)", marginBottom: "var(--s-6)" }}>
+                Nu vând produse generice. Construiesc sisteme care se potrivesc pe procesele reale ale firmei tale — CRM, automatizări, aplicații web și mai mult.
+              </p>
+              <Link href="/contact" className="btn btn-primary">
+                Discutăm proiectul tău <Arrow />
+              </Link>
+            </div>
+            <div className="pp-only-desktop">
+              <BusinessOSMockup />
+            </div>
           </div>
-          <h1 className="h-display" style={{ maxWidth: 700, fontSize: "clamp(32px, 5vw, 64px)", marginBottom: "var(--s-4)" }}>
-            Software custom pentru firma ta.
-          </h1>
-          <p className="lead" style={{ maxWidth: 580, color: "var(--fg-2)", marginBottom: "var(--s-6)" }}>
-            Nu vindut produse generice. Construiesc sisteme care se potrivesc pe procesele reale ale firmei tale — CRM, automatizări, aplicații web și mai mult.
-          </p>
-          <Link href="/contact" className="btn btn-primary">
-            Discutăm proiectul tău <Arrow />
-          </Link>
+        </div>
+      </section>
+
+      {/* Business OS visual */}
+      <section className="section" style={{ paddingTop: "var(--s-7)", paddingBottom: "var(--s-7)" }}>
+        <div className="container">
+          <div className="section-head" style={{ marginBottom: "var(--s-6)" }}>
+            <div className="eyebrow-row">
+              <span className="eyebrow">ce construim împreună</span>
+              <span className="line" />
+            </div>
+            <h2 className="h-2">Un sistem complet, nu o colecție de tool-uri.</h2>
+          </div>
+          <BusinessOSMockup />
         </div>
       </section>
 
@@ -138,7 +161,7 @@ export default function ServiciiPage() {
                 Spune-mi ce problemă vrei să rezolvi. Îți propun o soluție clară și realistă — fără audit de 2 săptămâni.
               </p>
               <Link href="/contact" className="btn btn-primary">
-                Cere o estimare gratuită <Arrow />
+                {siteConfig.ctas.estimate.label} <Arrow />
               </Link>
             </div>
           </div>
