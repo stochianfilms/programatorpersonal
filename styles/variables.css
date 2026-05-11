@@ -1,0 +1,82 @@
+:root {
+  /* Surfaces — slightly warm near-black, like graphite */
+  --bg-0: #07080A;            /* page */
+  --bg-1: #0C0E11;            /* card base */
+  --bg-2: #11141A;            /* card elevated */
+  --bg-3: #161A21;            /* deepest card */
+
+  /* Lines */
+  --line-1: rgba(255, 255, 255, 0.06);
+  --line-2: rgba(255, 255, 255, 0.10);
+  --line-3: rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --fg-1: #F2F1EC;            /* primary, very subtly warm */
+  --fg-2: #C9C8C2;
+  --fg-3: #8C8B86;            /* muted */
+  --fg-4: #5C5B57;            /* very muted */
+
+  /* Accent — default: lime electric */
+  --accent: oklch(86% 0.19 122);
+  --accent-soft: oklch(86% 0.19 122 / 0.14);
+  --accent-line: oklch(86% 0.19 122 / 0.30);
+  --accent-fg: #0A0B0A;       /* foreground on solid accent */
+
+  /* Status */
+  --warn: oklch(82% 0.14 75);
+  --danger: oklch(72% 0.16 25);
+
+  /* Type */
+  --font-sans: var(--font-geist-sans), "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-serif: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+
+  /* Radius */
+  --r-1: 6px;
+  --r-2: 10px;
+  --r-3: 14px;
+  --r-4: 20px;
+  --r-pill: 999px;
+
+  /* Spacing scale (8pt-ish) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* Layout */
+  --container: 1280px;
+  --gutter: 32px;
+}
+
+/* Accent themes — toggled via Tweaks (data-accent on <html>) */
+html[data-accent="lime"] {
+  --accent: oklch(86% 0.19 122);
+  --accent-soft: oklch(86% 0.19 122 / 0.14);
+  --accent-line: oklch(86% 0.19 122 / 0.30);
+  --accent-fg: #0A0B0A;
+}
+html[data-accent="cyan"] {
+  --accent: oklch(82% 0.13 210);
+  --accent-soft: oklch(82% 0.13 210 / 0.14);
+  --accent-line: oklch(82% 0.13 210 / 0.30);
+  --accent-fg: #04141A;
+}
+html[data-accent="green"] {
+  --accent: oklch(78% 0.18 158);
+  --accent-soft: oklch(78% 0.18 158 / 0.14);
+  --accent-line: oklch(78% 0.18 158 / 0.30);
+  --accent-fg: #04130C;
+}
+html[data-accent="amber"] {
+  --accent: oklch(83% 0.16 78);
+  --accent-soft: oklch(83% 0.16 78 / 0.14);
+  --accent-line: oklch(83% 0.16 78 / 0.30);
+  --accent-fg: #14100A;
+}

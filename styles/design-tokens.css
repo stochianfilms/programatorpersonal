@@ -1,0 +1,27 @@
+/* Semantic aliases over the Claude Design source tokens in variables.css. */
+:root {
+  --color-bg-page: var(--bg-0);
+  --color-bg-card: var(--bg-1);
+  --color-bg-elevated: var(--bg-2);
+  --color-bg-popover: var(--bg-3);
+
+  --color-border-subtle: var(--line-1);
+  --color-border-default: var(--line-2);
+  --color-border-strong: var(--line-3);
+
+  --color-text-primary: var(--fg-1);
+  --color-text-secondary: var(--fg-2);
+  --color-text-muted: var(--fg-3);
+  --color-text-subtle: var(--fg-4);
+
+  --color-brand: var(--accent);
+  --color-brand-soft: var(--accent-soft);
+  --color-brand-border: var(--accent-line);
+  --color-brand-foreground: var(--accent-fg);
+
+  --radius-sm: var(--r-1);
+  --radius-md: var(--r-2);
+  --radius-lg: var(--r-3);
+  --radius-xl: var(--r-4);
+  --radius-full: var(--r-pill);
+}

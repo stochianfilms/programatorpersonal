@@ -1,0 +1,269 @@
+[
+  {
+    "title": "E-Commerce Platform Migration: 3x Revenue Increase",
+    "client": {
+      "name": "StyleHub Romania",
+      "industry": "E-Commerce Fashion",
+      "size": "SMB (12 employees)"
+    },
+    "challenge": "Clientul rula un shop Magento 1.9 (end-of-life) cu performanță proastă. Pierdia ~$5,000/lună din conversii scăzute. Checkout-ul durează 3+ minute. Fără mobile optimization. Rivali au platforme moderne.",
+    "solution": "Migrație completă la Next.js + e-commerce custom cu Stripe. Redesign UX/UI. Mobile-first approach. Optimizare pagini de produs. Integrare inventory în timp real cu sistemul backend. Analytics GA4.",
+    "results": {
+      "revenue_increase": "312%",
+      "avg_order_value": "+47%",
+      "cart_abandonment_rate": "-68%",
+      "page_load_time": "2.1s → 0.8s",
+      "mobile_conversion": "+156%",
+      "monthly_new_customers": "+89%"
+    },
+    "timeline": "3 months",
+    "services": ["Custom Web Development", "E-Commerce Setup", "Mobile Optimization"],
+    "testimonial": "Am crezut că nu putem compensa cu Shein și Amazon. Platforma noastră acum e mai rapid și mai frumoasă decât 90% din competitori. Recomand 100%!",
+    "author": "Radu Gheorghe, Fondator StyleHub",
+    "metrics": {
+      "initial_revenue": "$16,000/month",
+      "final_revenue": "$66,400/month",
+      "development_cost": "$18,000",
+      "roi_months": "2.8"
+    }
+  },
+  {
+    "title": "CRM Implementation: 200+ Leads/Month Captured",
+    "client": {
+      "name": "ConsultPro Solutions",
+      "industry": "Consulting",
+      "size": "SMB (22 employees)"
+    },
+    "challenge": "Consultanți foloseau email + spreadsheets pentru CRM. Pierduseră leads. Fără follow-up systematic. Raport manual durează 3+ zile. Imposibil să vadă care proiecte sunt pe cale de a se încheia.",
+    "solution": "CRM custom cu dashboard real-time. Lead scoring automat. Email automation pentru follow-up. Integrazione cu Google Workspace și Stripe. Mobile app pentru consultanți. Role-based access (Manager/Consultant/Admin).",
+    "results": {
+      "leads_captured_monthly": "245",
+      "lead_response_time": "4hrs → 15min",
+      "conversion_rate": "32% → 41%",
+      "time_saved_per_week": "28 hours",
+      "revenue_per_consultant": "+$12,000/month"
+    },
+    "timeline": "6 weeks",
+    "services": ["CRM Systems", "API Integration", "Mobile App"],
+    "testimonial": "Nu stiu cum munciseserăm fără asta. Fiecare lead e tracked, fiecare follow-up e automat. Vânzările au crescut și consultanții sunt mai relaxati.",
+    "author": "Camelia Ionescu, Manager ConsultPro",
+    "metrics": {
+      "monthly_leads_before": "45",
+      "monthly_leads_after": "245",
+      "development_cost": "$12,000",
+      "roi_months": "1.2"
+    }
+  },
+  {
+    "title": "API Integration: $200K+ Annual Cost Savings",
+    "client": {
+      "name": "LogiFlow Distribution",
+      "industry": "Logistics",
+      "size": "Mid-Market (45 employees)"
+    },
+    "challenge": "Sistem ERP legacy (20+ ani) neintegrabil cu moderne tools. Manual data entry între sisteme. Erori frecvente. Ops team pierdea 4+ ore/zi cu copy-paste. Clienti complaina de shipment delays.",
+    "solution": "Custom API layer care conectează ERP legacy cu Shopify, Stripe, și UPS API. Real-time inventory sync. Automated order processing. Custom webhook handlers. Data validation și audit logs.",
+    "results": {
+      "operational_hours_saved": "1,040/year",
+      "data_errors_reduced": "-94%",
+      "order_fulfillment_speed": "2.5 days → 6 hours",
+      "annual_cost_savings": "$204,000",
+      "customer_satisfaction": "+42%"
+    },
+    "timeline": "8 weeks",
+    "services": ["System Integration", "API Development", "Consulting"],
+    "testimonial": "Prima dată în 15 ani când sistemele mele vorbesc între ele. Automațiile au eliminat munca repetitivă. Team-ul e mai fericit, clienții sunt mai mulțumiți.",
+    "author": "Vlad Petrovschi, COO LogiFlow",
+    "metrics": {
+      "annual_operational_cost": "$270,000",
+      "annual_savings_percentage": "75.6%",
+      "development_cost": "$22,000",
+      "roi_months": "1.3"
+    }
+  },
+  {
+    "title": "Cloud Migration & Optimization: 99.99% Uptime",
+    "client": {
+      "name": "FinSecure Banking Tech",
+      "industry": "FinTech",
+      "size": "Mid-Market (58 employees)"
+    },
+    "challenge": "Datacenter pe-premises în București. Single point of failure. Downtime costă $8,000/ore. Scaling manual = ziua intreaga. Zero disaster recovery. Compliance regulatori era complex.",
+    "solution": "Migrație la AWS cu multi-region redundancy. Infrastructure as Code (Terraform). Auto-scaling cu load balancing. DDoS protection cu CloudFlare. Automated backups la 2 locuri. Compliance monitoring (GDPR, PSD2).",
+    "results": {
+      "uptime_percentage": "99.99%",
+      "annual_downtime_hours": "0.44",
+      "scaling_time": "8 hours → 10 minutes",
+      "infrastructure_cost_reduction": "-38%",
+      "disaster_recovery_time": "15 minutes"
+    },
+    "timeline": "5 weeks",
+    "services": ["Cloud Infrastructure", "DevOps", "Consulting"],
+    "testimonial": "Am dormit bine prima noapte după migrație. Systemul e stabil. Compliance e automatic. Scaling e ușor. Money well spent.",
+    "author": "Dr. Stefan Gavril, CTO FinSecure",
+    "metrics": {
+      "monthly_infrastructure_cost_before": "$18,000",
+      "monthly_infrastructure_cost_after": "$11,160",
+      "annual_savings": "$94,560",
+      "development_cost": "$16,000",
+      "roi_months": "2.0"
+    }
+  },
+  {
+    "title": "Real Estate Portal: 50+ Property Listings Daily",
+    "client": {
+      "name": "PropHub Imobiliare",
+      "industry": "Real Estate",
+      "size": "SMB (8 employees)"
+    },
+    "challenge": "Website static. Properties update-ate manual pe site. Fără search avansată. Clienti nu puteau compara proprietăți. Mobile booking imposibil. Rivali aveau platforme interactive.",
+    "solution": "Portal dinamic cu advanced search, map integration, virtual tours, instant notifications, lead capture forms. Integration cu Google Maps și Stripe pentru bookings. Admin panel pentru agent properties management.",
+    "results": {
+      "daily_property_listings": "47",
+      "monthly_leads": "280",
+      "property_views": "+320%",
+      "booking_conversion": "+155%",
+      "agent_productivity": "+210%"
+    },
+    "timeline": "4 weeks",
+    "services": ["Custom Web Development", "CRM Systems"],
+    "testimonial": "Agentii se simt ca au instrumente profesionale. Properties se vând mai repede. Website-ul imi aduce ~8 leads/zi. Incredibil.",
+    "author": "Elena Stancu, Co-fondator PropHub",
+    "metrics": {
+      "monthly_revenue": "$22,000",
+      "development_cost": "$8,500",
+      "roi_months": "0.5"
+    }
+  },
+  {
+    "title": "Performance Optimization: 5x Faster Loading",
+    "client": {
+      "name": "MediaHub Content Platform",
+      "industry": "Digital Media",
+      "size": "SMB (15 employees)"
+    },
+    "challenge": "WordPress site cu 50,000 articole. Load time 6.2 secunde. SEO scăzut (ranking bottom page 2). Server costs mari ($4,000/month). Google PageSpeed score 28.",
+    "solution": "Rebuild în Next.js + headless CMS. Image optimization (WebP + lazy loading). Code splitting. CDN global (Cloudflare). Database optimization. Caching strategii (ISR, server cache).",
+    "results": {
+      "page_load_time": "6.2s → 1.1s",
+      "google_pagespeed_score": "28 → 96",
+      "monthly_server_cost": "$4,000 → $240",
+      "organic_traffic": "+487%",
+      "keyword_rankings": "Top 3 for 45+ keywords"
+    },
+    "timeline": "7 weeks",
+    "services": ["Custom Web Development", "Performance Optimization"],
+    "testimonial": "Site-ul nu mai era o problemă - devine o aset. Rankings-urile au explodat. Costuri scăzute. Perfect.",
+    "author": "Mircea Popescu, Editor MediaHub",
+    "metrics": {
+      "monthly_server_savings": "$3,760",
+      "annual_savings": "$45,120",
+      "development_cost": "$14,000",
+      "roi_months": "3.7"
+    }
+  },
+  {
+    "title": "SaaS MVP Launch: Series A Funding Secured",
+    "client": {
+      "name": "TaskFlow Startup",
+      "industry": "Productivity SaaS",
+      "size": "Startup (3 co-founders)"
+    },
+    "challenge": "Founders aveau ideea, zero prototip. Trebuiau MVP în 8 săptămâni pentru pitch. Buget: $15,000. Fără timp de a învăța stack-ul complet.",
+    "solution": "MVP complet: Landing page, login, core features (task management + team collaboration), Stripe integration, email notificații. Tech: Next.js, Supabase, PostgreSQL, Vercel. Iterații rapide pe baza feedback-ului.",
+    "results": {
+      "mvp_time_to_market": "7 weeks",
+      "beta_users": "320",
+      "monthly_recurring_revenue": "$8,400",
+      "series_a_raised": "$500,000",
+      "customer_retention": "78%"
+    },
+    "timeline": "7 weeks",
+    "services": ["Custom Web Development", "SaaS Architecture"],
+    "testimonial": "Echipa a transformat visul în realitate. Pitchdeck-ul era solid. Investitorii au fost impresionati de product quality. Sunt pe cale să fim unicorn. Mersi!",
+    "author": "Alex Ionescu, Co-founder TaskFlow",
+    "metrics": {
+      "development_cost": "$15,000",
+      "post_launch_revenue_year_1": "$100,800",
+      "roi_percentage": "572%"
+    }
+  },
+  {
+    "title": "Education Platform: 2,000+ Active Students",
+    "client": {
+      "name": "EduScape Online Academy",
+      "industry": "Education & Training",
+      "size": "SMB (12 employees)"
+    },
+    "challenge": "Instructori preda pe Zoom + Google Docs. Fără platformă centralizată. Studenti nu aveau unde să vada progress. Materiale depășite. Plăți procesate manual.",
+    "solution": "Platform LMS cu video lessons, interactive quizzes, progress tracking, certificate generation, payment processing (Stripe), community forums, instructor dashboard.",
+    "results": {
+      "active_students": "2,147",
+      "course_completion_rate": "67%",
+      "monthly_revenue": "$24,000",
+      "instructor_time_saved": "35 hours/month",
+      "student_satisfaction": "4.8/5 stars"
+    },
+    "timeline": "6 weeks",
+    "services": ["Custom Web Development", "SaaS Architecture"],
+    "testimonial": "Efectul e imediat. Studenti sunt mai engajati. Instructori au timp sa se concentreze pe teaching. Revenue grew faster than I expected.",
+    "author": "Ioana Radu, Founder EduScape",
+    "metrics": {
+      "monthly_revenue": "$24,000",
+      "development_cost": "$16,000",
+      "roi_months": "0.7"
+    }
+  },
+  {
+    "title": "Healthcare Clinic System: GDPR Compliant Records",
+    "client": {
+      "name": "HealthPlus Polyclinic",
+      "industry": "Healthcare",
+      "size": "SMB (25 employees)"
+    },
+    "challenge": "Records pacienți în fisiere fizice + Excel. GDPR vulnerability. Urgent urgent ca trebuie sa fiu compliant. Zero security. Programari telefonice = lost appointments.",
+    "solution": "Custom healthcare management system cu encrypted patient records, appointment scheduling, telemedicine integration, HIPAA/GDPR compliance, SMS reminders, prescription tracking.",
+    "results": {
+      "appointment_no_shows": "-65%",
+      "gdpr_compliance": "100%",
+      "patient_data_security": "Military-grade encryption",
+      "staff_efficiency": "+45%",
+      "patient_satisfaction": "+52%"
+    },
+    "timeline": "5 weeks",
+    "services": ["Custom Web Development", "Security & Compliance"],
+    "testimonial": "Complianta e rezolvata. Pacienți sunt mai happy. Staff-ul se poate concentra pe pacienți, nu pe birotică. Worth every penny.",
+    "author": "Dr. Maria Popescu, Director HealthPlus",
+    "metrics": {
+      "development_cost": "$18,000",
+      "annual_operational_savings": "$35,000",
+      "roi_months": "6.2"
+    }
+  },
+  {
+    "title": "Marketplace Platform: $2M+ Transaction Volume",
+    "client": {
+      "name": "ArtisanConnect Platform",
+      "industry": "E-Commerce Marketplace",
+      "size": "Startup (6 employees)"
+    },
+    "challenge": "Niciun tool existent nu permitea sa conectezi artisani cu cumparatori. Competitie mare pe piață. Trebuia diferențiator. Buget startup = limitat.",
+    "solution": "Custom marketplace cu seller onboarding, product listings, secure payments (Stripe escrow), rating system, messaging, analytics dashboard. Gamification: seller badges, rewards. Mobile app.",
+    "results": {
+      "total_sellers": "340",
+      "total_products": "12,400",
+      "monthly_transaction_volume": "$168,000",
+      "platform_commission_revenue": "$24,800/month",
+      "gross_merchandise_volume": "$2.1M/year"
+    },
+    "timeline": "9 weeks",
+    "services": ["Custom Web Development", "Mobile App", "Payment Integration"],
+    "testimonial": "Platforma conectează oameni talentati cu piață. Artisani cand vorbesc cu mine zic 'finally a platform that works for us'. Business-ul e exponential.",
+    "author": "Mihai Georgescu, CEO ArtisanConnect",
+    "metrics": {
+      "development_cost": "$28,000",
+      "annual_platform_revenue": "$297,600",
+      "roi_percentage": "963%"
+    }
+  }
+]

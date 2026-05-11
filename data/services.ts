@@ -1,0 +1,532 @@
+export type ServiceFeature = { title: string; description: string };
+export type FaqItem = { q: string; a: string };
+
+export type ServiceConfig = {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  tagline: string;
+  heroLead: string;
+  ctaText: string;
+  sourcePage: string;
+  seo: { title: string; description: string };
+  problems: string[];
+  howItHelps: { title: string; body: string }[];
+  features: ServiceFeature[];
+  usedBy: string[];
+  examples: { title: string; body: string }[];
+  faqs: FaqItem[];
+  relatedSlugs: string[];
+};
+
+const services: Record<string, ServiceConfig> = {
+  "crm-custom": {
+    slug: "crm-custom",
+    title: "CRM custom pentru firme care vor să nu mai piardă clienți în Excel și WhatsApp.",
+    shortTitle: "CRM custom",
+    tagline: "Toți clienții, toate etapele, toate urmăririle — într-un singur loc construit pe felul tău de lucru.",
+    heroLead: "Un CRM gata făcut nu se potrivește niciodată exact. Construim un sistem care reflectă procesele reale ale firmei tale, nu invers.",
+    ctaText: "Vreau un CRM pentru firma mea",
+    sourcePage: "crm_custom_page",
+    seo: {
+      title: "CRM custom pentru firme din România | Programator Personal",
+      description: "CRM construit pe procesele tale. Lead-uri, clienți, contracte, follow-up-uri și rapoarte — într-un singur loc. Fără Excel, fără WhatsApp pierdut.",
+    },
+    problems: [
+      "Lead-uri pierdute în inbox, WhatsApp sau foi volante",
+      "Clienți fără follow-up — oferte trimise pe care nu le urmărești",
+      "Statusuri neclare: nimeni nu știe unde e clientul în proces",
+      "Contracte și proiecte împrăștiate în mai multe fișiere",
+      "Rapoarte lipsă sau făcute manual la final de lună",
+      "Echipa nu știe ce a vorbit colegul cu un client",
+    ],
+    howItHelps: [
+      { title: "Un singur loc pentru toți clienții", body: "De la primul contact până la contract semnat și facturat — fiecare etapă vizibilă, pentru tine și pentru echipă." },
+      { title: "Follow-up automat", body: "Setezi o regulă: dacă un lead nu a primit răspuns în 3 zile, primești reminder sau se trimite automat un email." },
+      { title: "Rapoarte la un click", body: "Câți lead-uri ai primit luna asta, câte ai transformat, cât ai facturat. Fără Excel, fără muncă manuală." },
+    ],
+    features: [
+      { title: "Pipeline vizual", description: "Lead-uri, oferte, contracte, clienți activi — fiecare în etapa corectă." },
+      { title: "Fișă client completă", description: "Istoric conversații, documente, proiecte, facturi — totul la un loc." },
+      { title: "Follow-up-uri automate", description: "Reminder-uri și emailuri trimise automat după reguli pe care le definești tu." },
+      { title: "Generator contracte", description: "Contract generat cu datele clientului, gata de trimis în câteva secunde." },
+      { title: "Calendar activități", description: "Întâlniri, apeluri, termene — vizibile în calendar, legate de client." },
+      { title: "Dashboard și rapoarte", description: "Lead-uri, conversii, venit, performanță echipă — date live, nu Excel." },
+      { title: "Roluri și permisiuni", description: "Fiecare angajat vede ce are nevoie. Datele sensibile rămân protejate." },
+      { title: "Notificări și alerte", description: "Ești anunțat când un lead nou intră, când un contract expiră sau când un termen se apropie." },
+    ],
+    usedBy: [
+      "Firme de servicii profesionale",
+      "Agenții și consultanți",
+      "Service-uri și ateliere",
+      "Clinici și cabinete",
+      "Firme de construcții",
+      "Orice firmă cu clienți de gestionat",
+    ],
+    examples: [
+      { title: "Agenție imobiliară", body: "22 agenți, lead-uri din 6 surse, follow-up automat la 3/7/14 zile. Rata de conversie crescută cu 38%." },
+      { title: "Firmă de consultanță", body: "Pontaj, facturare automată, portal client cu progres live. 3 zile mai puțin la facturarea lunară." },
+      { title: "Service auto", body: "Fișe clienți cu istoricul mașinilor, SMS automat la finalizare, raport zilnic al atelierului." },
+    ],
+    faqs: [
+      { q: "E mai bun decât HubSpot sau Pipedrive?", a: "Nu mai bun în general — mai potrivit pentru tine. CRM-urile generice au sute de funcții pe care nu le vei folosi. Al tău are exact ce ai nevoie, în fluxul tău." },
+      { q: "Cât durează să îl implementăm?", a: "Un CRM de bază e gata în 4-6 săptămâni. Iterăm săptămânal, astfel că poți începe să îl folosești chiar și înainte de finalizare." },
+      { q: "Poate fi extins în timp?", a: "Da. Construim pe o arhitectură modulară. Adaugi portal client, integrare plăți, sau automatizări noi fără să rescrii totul." },
+      { q: "Poate fi integrat cu emailul meu?", a: "Da — Google Workspace, Microsoft 365, sau orice provider IMAP/SMTP. Emailurile se asociază automat cu clientul." },
+      { q: "Cine îl poate folosi din firmă?", a: "Tu definești rolurile. Un agent vede doar clienții lui. Managerul vede tot. Contabilul vede doar facturile." },
+    ],
+    relatedSlugs: ["automatizari-business", "generator-contracte", "dashboard-rapoarte"],
+  },
+
+  "automatizari-business": {
+    slug: "automatizari-business",
+    title: "Automatizări pentru firme care pierd timp cu sarcini repetitive.",
+    shortTitle: "Automatizări business",
+    tagline: "Ce faci manual azi, trebuie să se facă singur mâine.",
+    heroLead: "Emailuri repetitive, rapoarte copiate din sistem în sistem, notificări trimise manual — toate astea pot dispărea. Îți construim fluxuri care rulează fără să te atingi de ele.",
+    ctaText: "Spune-mi ce faci manual și îți spun ce putem automatiza",
+    sourcePage: "automatizari_business_page",
+    seo: {
+      title: "Automatizări business pentru firme din România | Programator Personal",
+      description: "Scapă de copy-paste, emailuri repetitive și rapoarte manuale. Construim automatizări care rulează singure — notificări, documente, sincronizări, rapoarte.",
+    },
+    problems: [
+      "Copy-paste manual între sisteme (Excel, email, ERP)",
+      "Emailuri de confirmare sau follow-up trimise la mână",
+      "Rapoarte lunare care îți mănâncă o zi întreagă",
+      "Date mutate manual dintr-un sistem în altul",
+      "Notificări uitate — clienți neanunțați, termene depășite",
+      "Facturi emise manual una câte una",
+    ],
+    howItHelps: [
+      { title: "Definim ce se repetă", body: "Orice task pe care îl faci de mai mult de 2-3 ori pe săptămână în același fel poate fi automatizat." },
+      { title: "Construim fluxul", body: "Un trigger (formular, dată, acțiune) declanșează o serie de acțiuni: email, document, notificare, înregistrare în baza de date." },
+      { title: "Rulează fără să te uiți", body: "Testăm, lansăm, monitorizăm. Tu nu mai atingi fluxul — el se ocupă singur." },
+    ],
+    features: [
+      { title: "Formular → CRM automat", description: "Un client completează un formular pe site → apare instant în CRM cu datele complete." },
+      { title: "Client → Contract auto", description: "Selectezi un client și un serviciu → contractul e generat cu datele lui în câteva secunde." },
+      { title: "Reminder-uri automate", description: "Termene, reînnoiri, follow-up-uri — trimise automat la momentul potrivit." },
+      { title: "Rapoarte automate", description: "La final de săptămână sau lună, primești raportul gata în email sau direct în dashboard." },
+      { title: "Notificări email/SMS", description: "Clientul e anunțat automat la fiecare etapă importantă a procesului." },
+      { title: "Integrări API", description: "Legăm sisteme separate: SmartBill, Stripe, Google Sheets, Slack, WhatsApp Business." },
+      { title: "Sincronizare date", description: "Datele se mișcă singure între sisteme — fără import/export manual." },
+      { title: "Loguri și monitorizare", description: "Știi exact ce a rulat, când și cu ce rezultat. Nicio automatizare nu dispare în neant." },
+    ],
+    usedBy: [
+      "Firme cu echipe de vânzări",
+      "Agenții și firme de servicii",
+      "E-commerce și magazine online",
+      "Firme cu procese repetitive zilnice",
+      "Orice firmă cu mai mult de 3 angajați",
+    ],
+    examples: [
+      { title: "Agenție de recrutare", body: "Candidat aplică → CV în sistem → email automat → reminder recrutor la 48h. Zero manual." },
+      { title: "Magazin online", body: "Comandă plasată → factură emisă → email client → AWB generat → SMS la expediere. Complet automat." },
+      { title: "Firmă de servicii", body: "Contract semnat → proiect creat în sistem → email bun venit client → sarcini echipă alocate automat." },
+    ],
+    faqs: [
+      { q: "Am nevoie de CRM ca să pot automatiza?", a: "Nu neapărat. Putem automatiza procese și fără CRM — de exemplu, un formular care trimite email și creează un task, fără baze de date proprii." },
+      { q: "Poate fi integrat cu sistemele pe care le am deja?", a: "Aproape întotdeauna. Dacă au API sau webhook, le putem lega. Funcționăm cu Google Workspace, Microsoft 365, SmartBill, Stripe, Netopia, și altele." },
+      { q: "Ce se întâmplă dacă o automatizare dă eroare?", a: "Construim loguri și alerte. Știi imediat dacă ceva nu a funcționat, înainte să devină problemă." },
+      { q: "Pot modifica automatizarea după ce e lansată?", a: "Da. Regulile pot fi ajustate fără să rescrii totul. Adaugi un pas nou, schimbi un template, modifici o condiție." },
+    ],
+    relatedSlugs: ["crm-custom", "dashboard-rapoarte", "aplicatii-web-custom"],
+  },
+
+  "aplicatii-web-custom": {
+    slug: "aplicatii-web-custom",
+    title: "Aplicații web custom construite pe modul în care lucrează firma ta.",
+    shortTitle: "Aplicații web custom",
+    tagline: "Software-ul care nu există în nicio listă de prețuri pentru că e construit special pentru tine.",
+    heroLead: "Niciun soft gata făcut nu se potrivește exact proceselor tale. Construim aplicații web care reflectă cum lucrezi tu, nu invers.",
+    ctaText: "Vreau o aplicație web custom",
+    sourcePage: "aplicatii_web_custom_page",
+    seo: {
+      title: "Aplicații web custom pentru firme din România | Programator Personal",
+      description: "Aplicații web construite pe procesele tale. Tool-uri interne, platforme business, portaluri, dashboard-uri — exact ce ai nevoie, fără funcții inutile.",
+    },
+    problems: [
+      "Softuri generice care nu acoperă exact cum lucrezi tu",
+      "Procese interne făcute în Excel sau Word pentru că nu există altceva",
+      "3-4 tool-uri separate care nu comunică între ele",
+      "Echipa adaptează fluxul de lucru la limitele unui soft, nu invers",
+      "Lipsă control asupra datelor și funcționalităților",
+      "Costuri lunare mari pentru SaaS-uri pe care le folosești parțial",
+    ],
+    howItHelps: [
+      { title: "Analizăm procesul real", body: "O discuție directă — înțelegem exact cum lucrezi, ce date intră, ce decizii se iau, ce iese la capăt." },
+      { title: "Construim exact ce lipsește", body: "Nu un produs generic. O aplicație care rezolvă problema ta concretă, în vocabularul tău." },
+      { title: "Crește cu firma ta", body: "Arhitectură modulară — adaugi funcții noi fără să rescrii totul." },
+    ],
+    features: [
+      { title: "Aplicații interne pentru echipă", description: "Tool-uri de gestiune, pontaj, planificare, raportare — adaptate exact pe fluxul vostru." },
+      { title: "Platforme business", description: "Aplicații de coordonare, marketplace-uri interne, sisteme de aprobare." },
+      { title: "Portaluri pentru clienți", description: "Contul clientului cu documente, statusuri, facturi și comunicare directă." },
+      { title: "Dashboard-uri și rapoarte", description: "Date live din toate sistemele tale, vizualizate clar și exportabile." },
+      { title: "Sisteme de gestiune", description: "Stoc, comenzi, proiecte, resurse — orice flux de business transpus în software." },
+      { title: "Calculator și configurator online", description: "Clienții configurează produsul sau serviciul tău direct pe site și primesc prețul instant." },
+      { title: "Mobile-ready", description: "Funcționează pe telefon și tabletă — important pentru echipele de teren." },
+      { title: "Integrări API", description: "Se conectează cu ce ai deja: ERP, facturare, curierat, plăți." },
+    ],
+    usedBy: [
+      "Firme cu procese interne neacoperite de soft-uri standard",
+      "Echipe care lucrează cu Excel-uri complexe",
+      "Antreprenori care vor să valideze o idee rapid",
+      "Firme care vor să reducă costurile de SaaS",
+      "Orice business cu fluxuri specifice industriei",
+    ],
+    examples: [
+      { title: "Configurator online", body: "Clientul alege dimensiuni, materiale, opțiuni → vede prețul instant → trimite comanda. Zero apeluri pentru ofertare simplă." },
+      { title: "Sistem de gestiune proiecte", body: "Task-uri, milestone-uri, fișiere, facturi — totul legat de proiect, vizibil de client și echipă." },
+      { title: "Aplicație internă de pontaj", body: "Angajații marchează intrarea/ieșirea, managerul aprobă, contabilul exportă automat." },
+    ],
+    faqs: [
+      { q: "Care e diferența față de o aplicație SaaS?", a: "O aplicație SaaS e construită pentru mii de clienți. A ta e construită pentru tine — cu funcțiile tale, datele tale, regulile tale. Tu deții codul." },
+      { q: "Cât durează să o construim?", a: "Un MVP funcțional e gata în 3-6 săptămâni. Lucrăm iterativ — folosești prima versiune în timp ce adăugăm restul." },
+      { q: "Cine menține aplicația după lansare?", a: "Eu. Am pachete de mentenanță lunare sau la oră. Nu te las cu codul în brațe." },
+      { q: "Pot schimba și adăuga funcții în timp?", a: "Da, și chiar asta recomand. Construim simplu la început, vedem ce funcționează în practică, adăugăm ce lipsește." },
+    ],
+    relatedSlugs: ["crm-custom", "automatizari-business", "portal-clienti"],
+  },
+
+  "generator-contracte": {
+    slug: "generator-contracte",
+    title: "Generator de contracte pentru firme care vor să scape de copy-paste în Word.",
+    shortTitle: "Generator contracte",
+    tagline: "Un contract corect, în câteva secunde — cu datele clientului completate automat.",
+    heroLead: "Editezi același Word de 5 ani, înlocuiești datele clientului de mână, trimiți pe email și speri că ai prins toate greșelile. Există o variantă mai bună.",
+    ctaText: "Vreau să generez contracte mai rapid",
+    sourcePage: "generator_contracte_page",
+    seo: {
+      title: "Generator de contracte custom pentru firme | Programator Personal",
+      description: "Generează contracte corecte în câteva secunde. Template-uri editabile, variabile automate din CRM, PDF instant, status semnat/trimis. Fără copy-paste.",
+    },
+    problems: [
+      "Contracte copiate manual dintr-un Word în altul",
+      "Greșeli în date: nume greșit, sumă greșită, dată incorectă",
+      "Template-uri pierdute sau versiuni multiple confuze",
+      "Statusuri neclare: cine a semnat, cine nu, care expiră",
+      "Trimiterea contractelor durează — PDF manual, email manual",
+      "Nu știi rapid câte contracte active ai și care expiră",
+    ],
+    howItHelps: [
+      { title: "Template-uri editabile", body: "Definești structura contractului o dată. Datele clientului, serviciului și sumei se completează automat din sistemul tău." },
+      { title: "PDF instant", body: "Selectezi clientul, selectezi serviciul, apeși un buton. Contractul e gata, corect, gata de trimis." },
+      { title: "Status clar", body: "Știi exact ce contract e trimis, semnat, expirat sau anulat — fără să cauți prin email." },
+    ],
+    features: [
+      { title: "Template-uri multiple", description: "Contracte de prestări servicii, de mentenanță, de colaborare — orice format ai nevoie." },
+      { title: "Variabile automate", description: "Nume, adresă, CUI, serviciu, sumă, dată — completate din baza de date, fără erori." },
+      { title: "Preview contract", description: "Verifici cum arată contractul înainte să îl trimiți." },
+      { title: "Export PDF", description: "PDF generat automat, gata de descărcat sau trimis." },
+      { title: "Trimitere email directă", description: "Contractul ajunge la client direct din sistem, cu un template de email predefinit." },
+      { title: "Status semnat/trimis", description: "Urmărești fiecare contract: trimis, vizualizat, semnat, expirat." },
+      { title: "Integrare cu CRM", description: "Contractul se leagă automat de clientul și proiectul din CRM." },
+      { title: "Istoric versiuni", description: "Semnătura digitală, date de trimitere, modificări — totul arhivat." },
+    ],
+    usedBy: [
+      "Firme de servicii profesionale",
+      "Consultanți și freelanceri",
+      "Agenții",
+      "Service-uri",
+      "Orice firmă cu contracte repetitive",
+    ],
+    examples: [
+      { title: "Agenție de marketing", body: "10 contracte noi pe lună. De la 45 minute per contract la 3 minute. Fără greșeli de date." },
+      { title: "Firmă de consultanță IT", body: "Contract de mentenanță + SLA generat automat la semnarea unui proiect nou." },
+      { title: "Clinică stomatologică", body: "Consimțământ și contract de tratament generat la înregistrarea pacientului." },
+    ],
+    faqs: [
+      { q: "Pot folosi template-urile mele existente?", a: "Da. Preluăm documentele tale Word sau PDF și le transformăm în template-uri cu variabile automate." },
+      { q: "Contractul are valoare legală?", a: "Da, dacă are semnătura olografă sau digitală. Putem integra și semnătură electronică (certsign, docusign sau similar)." },
+      { q: "Pot genera contracte diferite pentru servicii diferite?", a: "Da. Ai câte template-uri ai nevoie, fiecare cu câmpurile potrivite pentru serviciul respectiv." },
+      { q: "Se poate integra cu sistemul de facturare?", a: "Da. Contractul semnat poate declanșa automat emiterea primei facturi sau a avansului." },
+    ],
+    relatedSlugs: ["crm-custom", "automatizari-business", "portal-clienti"],
+  },
+
+  "dashboard-rapoarte": {
+    slug: "dashboard-rapoarte",
+    title: "Dashboard-uri și rapoarte automate pentru decizii mai clare.",
+    shortTitle: "Dashboard-uri și rapoarte",
+    tagline: "Datele firmei tale, vizibile într-un singur loc, actualizate live — fără Excel.",
+    heroLead: "Dacă iei decizii pe baza unui raport lunar făcut manual, probabil iei decizii cu întârziere. Construim dashboard-uri care îți arată ce se întâmplă acum.",
+    ctaText: "Vreau să văd datele firmei într-un singur loc",
+    sourcePage: "dashboard_rapoarte_page",
+    seo: {
+      title: "Dashboard-uri și rapoarte automate pentru firme | Programator Personal",
+      description: "Date live din toată firma ta într-un singur loc. Vânzări, lead-uri, proiecte, încasări, performanță echipă — actualizate automat, fără Excel.",
+    },
+    problems: [
+      "Date împrăștiate în mai multe sisteme — nu ai o imagine de ansamblu",
+      "Rapoarte lunare făcute manual, de la zero, cu date incomplete",
+      "Decizii luate pe baza intuiției, nu a datelor",
+      "Nu știi care client aduce cel mai mult profit",
+      "Echipa nu are vizibilitate asupra performanței",
+      "Export manual din CRM, facturare, Excel — ore de muncă inutilă",
+    ],
+    howItHelps: [
+      { title: "Toate datele la un loc", body: "Tragem date din toate sistemele tale — CRM, facturare, e-commerce, producție — și le afișăm unificat." },
+      { title: "Actualizat automat", body: "Nu mai aștepți finalul de lună. Dashboard-ul se actualizează în timp real sau la interval definit de tine." },
+      { title: "Filtrat pe ce contează", body: "Vrei să vezi doar vânzările unui agent? Sau profitul pe client? Sau comenzile unui depozit? Filtrezi instant." },
+    ],
+    features: [
+      { title: "KPI-uri cheie", description: "Lead-uri, vânzări, proiecte active, încasări — vizibile la prima vedere." },
+      { title: "Grafice interactive", description: "Tendințe, comparații, distribuții — vizualizate clar, nu ca tabele de numere." },
+      { title: "Rapoarte periodice automate", description: "La final de săptămână sau lună, raportul e trimis automat pe email sau accesibil în dashboard." },
+      { title: "Filtre și segmentare", description: "Filtrezi pe perioadă, agent, client, produs, regiune — orice dimensiune relevantă pentru tine." },
+      { title: "Export PDF și Excel", description: "Raportul e gata de export cu un click, pentru contabil sau board." },
+      { title: "Performanță echipă", description: "Cine a generat câte lead-uri, cine a finalizat câte proiecte, care e rata de conversie per agent." },
+      { title: "Date financiare", description: "Venit, cheltuieli, marjă, facturi emise, facturi neplătite — vizibil fără să intri în contabilitate." },
+      { title: "Alerte inteligente", description: "Primești notificare dacă un KPI depășește sau scade sub un prag definit de tine." },
+    ],
+    usedBy: [
+      "Manageri care vor să vadă firma la un click distanță",
+      "Echipe de vânzări",
+      "E-commerce și magazine online",
+      "Firme cu mai mulți angajați sau locații",
+      "Orice business care ia decizii pe baza datelor",
+    ],
+    examples: [
+      { title: "E-commerce", body: "Vânzări pe produs, cost pe achiziție, marjă per categorie — actualizat live din magazinul online și din contabilitate." },
+      { title: "Agenție imobiliară", body: "Lead-uri pe sursă, conversie per agent, portofoliu active — vizibil pentru fiecare agent și manager." },
+      { title: "Firmă de producție", body: "Comenzi în lucru, stoc materie primă, livrări programate, defecte per batch — totul într-un singur ecran." },
+    ],
+    faqs: [
+      { q: "Se poate conecta la sistemele pe care le am deja?", a: "Da. Putem extrage date din SmartBill, Facturis, Stripe, Google Sheets, orice sistem cu API sau bază de date accesibilă." },
+      { q: "Cine poate accesa dashboard-ul?", a: "Tu definești rolurile. Directorul vede tot. Agentul vede doar datele lui. Contabilul vede doar financiarele." },
+      { q: "Pot personaliza ce metrici văd?", a: "Da. Dashboard-ul e construit pe nevoile tale specifice, nu pe un template generic." },
+      { q: "Datele sunt actualizate în timp real?", a: "Depinde de surse. Cu API-uri moderne — da, aproape real-time. Cu export din sisteme mai vechi — la interval definit (orar, zilnic)." },
+    ],
+    relatedSlugs: ["crm-custom", "automatizari-business", "aplicatii-web-custom"],
+  },
+
+  "platforma-rezervari": {
+    slug: "platforma-rezervari",
+    title: "Platformă de rezervări construită pe modul în care lucrează firma ta.",
+    shortTitle: "Platformă rezervări",
+    tagline: "Clienții rezervă singuri. Tu ești anunțat. Programul se completează fără telefoane.",
+    heroLead: "Calendarul tău e gestionat pe WhatsApp, telefon și agendă fizică. Există un mod mai simplu — pentru tine și pentru client.",
+    ctaText: "Vreau o platformă de rezervări",
+    sourcePage: "platforma_rezervari_page",
+    seo: {
+      title: "Platformă de rezervări custom pentru clinici, saloane, consultanți | Programator Personal",
+      description: "Platformă de rezervări construită pe specificul tău. Calendar, disponibilitate, confirmări, notificări, integrare CRM. Pentru clinici, saloane, fotografi, consultanți.",
+    },
+    problems: [
+      "Rezervările vin pe WhatsApp, telefon, email — gestionat haotic",
+      "Programul e suprapus sau cu goluri din cauza lipsei de vizibilitate",
+      "Clienții sună să întrebe disponibilitatea în loc să rezerve singuri",
+      "Nu-show: clientul uită, tu pierzi un slot",
+      "Confirmările și reminder-urile sunt trimise manual",
+      "Nu ai un sistem centralizat cu istoricul clienților",
+    ],
+    howItHelps: [
+      { title: "Calendar online 24/7", body: "Clientul vede disponibilitatea ta în timp real și rezervă singur, inclusiv noaptea sau în weekend." },
+      { title: "Confirmări și reminder-uri automate", body: "La rezervare — confirmare instant. Cu 24h înainte — reminder SMS sau email. Fără să atingi nimic." },
+      { title: "Integrare cu CRM", body: "Fiecare rezervare creează sau actualizează fișa clientului. Istoricul e complet, mereu." },
+    ],
+    features: [
+      { title: "Calendar cu disponibilitate", description: "Definești orele, pauzele, zilele libere. Clientul vede doar sloturile disponibile." },
+      { title: "Formular de rezervare personalizat", description: "Clientul completează ce ai nevoie: tip serviciu, număr persoane, mențiuni speciale." },
+      { title: "Confirmări automate", description: "Email sau SMS de confirmare imediat după rezervare, cu toate detaliile." },
+      { title: "Reminder-uri anti no-show", description: "SMS sau email automat cu 24h (sau 2h) înainte de programare." },
+      { title: "Gestionare anulări", description: "Clientul poate anula sau reprograma singur, în intervalul permis de tine." },
+      { title: "Multiple servicii sau specialiști", description: "Dacă ai mai mulți angajați sau mai multe tipuri de servicii, fiecare cu calendarul lui." },
+      { title: "Plată online la rezervare", description: "Avans sau plată completă la momentul rezervării, cu Stripe sau Netopia." },
+      { title: "Integrare cu CRM", description: "Rezervarea se leagă automat de fișa clientului din CRM." },
+    ],
+    usedBy: [
+      "Clinici și cabinete medicale",
+      "Saloane de înfrumusețare",
+      "Fotografi și videografi",
+      "Consultanți și coachi",
+      "Service-uri cu programări",
+      "Locații de evenimente",
+      "Profesori și traineri",
+    ],
+    examples: [
+      { title: "Clinică stomatologică", body: "6 cabinete, calendar partajat, reminder SMS cu 24h înainte. No-show scăzut de la 18% la 5%." },
+      { title: "Salon de înfrumusețare", body: "3 specialiste, servicii diferite, plată avans la rezervare. Programul complet vizibil, clientele rezervă singure." },
+      { title: "Consultant independent", body: "Calendar integrat cu Google Calendar, rezervare prin site, confirmare automată cu link Meet." },
+    ],
+    faqs: [
+      { q: "Se poate integra cu Google Calendar?", a: "Da. Rezervările făcute în platformă apar automat în Google Calendar și invers." },
+      { q: "Poate fi personalizat cu brandingul meu?", a: "Da. Logo, culori, texte — totul adaptat la identitatea ta vizuală." },
+      { q: "Clientul poate anula sau reprograma?", a: "Da, cu regulile definite de tine — de exemplu, anulare gratuită cu minim 24h înainte." },
+      { q: "Pot accepta plăți la rezervare?", a: "Da, prin Stripe sau Netopia. Avans sau suma completă, la alegerea ta." },
+    ],
+    relatedSlugs: ["crm-custom", "automatizari-business", "dashboard-rapoarte"],
+  },
+
+  "portal-clienti": {
+    slug: "portal-clienti",
+    title: "Portal pentru clienți, ca oamenii să găsească singuri ce au nevoie.",
+    shortTitle: "Portal clienți",
+    tagline: "Clientul intră, vede statusul, descarcă documentul, plătește factura. Tu nu răspunzi la 10 emailuri pe zi.",
+    heroLead: "Clienții tăi te sună sau îți scriu pe email pentru lucruri pe care ar trebui să le găsească singuri. Un portal client rezolvă asta.",
+    ctaText: "Vreau portal pentru clienții mei",
+    sourcePage: "portal_clienti_page",
+    seo: {
+      title: "Portal pentru clienți custom pentru firme din România | Programator Personal",
+      description: "Portal client cu cont securizat, documente, status proiect, facturi, mesaje și livrabile. Clientul găsește singur ce are nevoie — tu economisești timp.",
+    },
+    problems: [
+      "Clienții sună sau scriu pe email să întrebe statusul proiectului",
+      "Documentele sunt trimise pe email — se pierd, nu sunt versionare",
+      "Facturile sunt trimise individual, urmărirea plăților e manuală",
+      "Nu ai un canal structurat de comunicare cu clientul",
+      "Livrabilele sunt trimise pe WeTransfer sau Google Drive — haotic",
+      "Clientul nu are vizibilitate asupra progresului — generează anxietate",
+    ],
+    howItHelps: [
+      { title: "Contul clientului", body: "Fiecare client are acces la un spațiu propriu, securizat, cu tot ce îl privește." },
+      { title: "Status proiect live", body: "Clientul vede progresul în timp real — faze finalizate, ce urmează, timeline. Nu mai sună să întrebe." },
+      { title: "Documente și livrabile organizate", body: "Fișiere versionare, contracte, facturi — toate într-un loc, accesibile oricând." },
+    ],
+    features: [
+      { title: "Cont client securizat", description: "Login cu email sau link magic — fără parole de reținut." },
+      { title: "Status proiect", description: "Progresul proiectului vizibil pas cu pas, cu estimări și etape finalizate." },
+      { title: "Documente și contracte", description: "Upload de fișiere versionare, descărcare oricând, nicio pierdere." },
+      { title: "Facturi și plăți", description: "Clientul vede facturile, poate plăti online și descarcă chitanța." },
+      { title: "Livrabile", description: "Fișierele predate clientului — organizate, cu versiuni, cu comentarii." },
+      { title: "Mesaje", description: "Canal de comunicare direct în portal — fără emailuri pierdute." },
+      { title: "Istoric", description: "Tot ce s-a întâmplat în proiect — cronologic, cu filtre." },
+      { title: "Notificări", description: "Clientul e anunțat când se încarcă ceva nou, când o etapă e finalizată sau când un termen se apropie." },
+    ],
+    usedBy: [
+      "Agenții creative și de marketing",
+      "Firme de consultanță",
+      "Firme de software",
+      "Contabili și firme de contabilitate",
+      "Avocați și firme juridice",
+      "Orice firmă cu proiecte pe durate mai lungi",
+    ],
+    examples: [
+      { title: "Firmă de software", body: "Clientul vede sprint-urile, aprobă livrabilele, plătește facturile — totul în portal. Zero emailuri de status." },
+      { title: "Agenție de contabilitate", body: "Clientul uploadează documentele lunare, contabilul le procesează, raportul apare în portal. Fără drumuri, fără email." },
+      { title: "Avocat", body: "Dosar electronic per client — documente, termene, stadiu dosar. Clientul vede progresul fără să sune." },
+    ],
+    faqs: [
+      { q: "E securizat?", a: "Da. Fiecare client vede doar datele lui. Conexiune HTTPS, autentificare sigură, date izolate." },
+      { q: "Poate fi personalizat cu brandingul meu?", a: "Da. Logo, culori, domeniu propriu (portal.firmata.ro) — arată ca produsul tău." },
+      { q: "Pot defini ce vede clientul?", a: "Da. Decizi ce module sunt active pentru fiecare client sau tip de client." },
+      { q: "Se integrează cu sistemul meu de facturare?", a: "Da. Facturile din SmartBill sau Facturis pot apărea automat în portalul clientului." },
+    ],
+    relatedSlugs: ["crm-custom", "generator-contracte", "aplicatii-web-custom"],
+  },
+
+  "magazin-online-custom": {
+    slug: "magazin-online-custom",
+    title: "Magazin online custom pentru firme care vor mai mult decât un template.",
+    shortTitle: "Magazin online custom",
+    tagline: "Când Shopify nu mai încape pe regulile tale de business.",
+    heroLead: "Produse cu variații complexe, prețuri pe volum, comenzi cu configurații speciale, flux de livrare propriu — unele business-uri depășesc orice platformă standard.",
+    ctaText: "Vreau magazin online custom",
+    sourcePage: "magazin_online_custom_page",
+    seo: {
+      title: "Magazin online custom pentru firme din România | Programator Personal",
+      description: "Magazin online construit pe regulile tale de business. Catalog, checkout custom, cont client, plăți, curierat, dashboard comenzi. Performanță bună, SEO inclus.",
+    },
+    problems: [
+      "Platforma actuală nu suportă variațiile complexe ale produselor tale",
+      "Fluxul de comandă nu se potrivește procesului tău (aprovizionare, producție, livrare)",
+      "Integrările cu curierii sau facturarea sunt limitate sau inexistente",
+      "Costurile lunare ale platformei SaaS cresc cu volumul",
+      "SEO-ul e limitat de platforma pe care ești",
+      "Nu ai control deplin asupra datelor clienților și comenzilor",
+    ],
+    howItHelps: [
+      { title: "Catalog construit pe produsele tale", body: "Variații, configurații, prețuri pe volum, produse cu date tehnice complexe — orice structură de produs ai nevoie." },
+      { title: "Flux de comandă adaptat", body: "De la comandă la livrare — fiecare pas al procesului tău reflectat în sistem." },
+      { title: "Integrări complete", body: "Curierat (Fan Courier, DPD, Cargus), facturare (SmartBill), plăți (Stripe, Netopia), stoc — toate conectate." },
+    ],
+    features: [
+      { title: "Catalog produse flexibil", description: "Variații, configurații, prețuri per volum sau client, produse cu fișe tehnice." },
+      { title: "Checkout personalizat", description: "Câmpuri custom, validări speciale, termeni și condiții, metode de plată multiple." },
+      { title: "Cont client", description: "Istoricul comenzilor, facturile, adresele salvate, lista de dorințe." },
+      { title: "Integrare plăți", description: "Stripe, Netopia, plată ramburs, transfer bancar — orice combinație ai nevoie." },
+      { title: "Integrare curierat", description: "AWB generat automat, tracking în timp real, alegere curier la checkout." },
+      { title: "Dashboard comenzi", description: "Status comenzi, gestiune stoc, rapoarte vânzări — totul vizibil operatorilor." },
+      { title: "Performanță și SEO", description: "Server-side rendering, Core Web Vitals optimizate, URL-uri SEO-friendly, sitemap automat." },
+      { title: "Stoc multi-depozit", description: "Stoc per locație sau depozit, rezervare automată la comandă, alertă la epuizare." },
+    ],
+    usedBy: [
+      "Producători cu produse configurabile",
+      "Magazine cu stoc mare și variații complexe",
+      "B2B cu prețuri diferite per client",
+      "Firme cu flux de livrare specific",
+      "Orice business care a depășit platforma actuală",
+    ],
+    examples: [
+      { title: "Producător mobilier", body: "Configurator online — clientul alege dimensiuni, materiale, culori. Prețul calculat instant, comanda trimisă direct în producție." },
+      { title: "Distribuitor B2B", body: "Prețuri personalizate per client, comenzi cu cantități minime, factură automată la livrare." },
+      { title: "Magazin handmade", body: "800 SKU, stoc în timp real pe două platforme, AWB generat automat, raport profit per produs." },
+    ],
+    faqs: [
+      { q: "E mai scump decât Shopify?", a: "Costul inițial e mai mare, dar nu ai costuri lunare mari și deții codul. Pe termen lung e mai economic dacă volumul tău e semnificativ." },
+      { q: "Cât durează să îl construim?", a: "Un magazin de bază — 6-10 săptămâni. Unul complex cu integrări multiple — 3-5 luni." },
+      { q: "Poate fi migrat de pe Shopify/WooCommerce?", a: "Da. Migrăm produsele, clienții, comenzile istorice și SEO-ul." },
+      { q: "Cum gestionăm actualizările de securitate?", a: "Prin pachetul de mentenanță lunară — actualizări, monitoring, backup automat." },
+    ],
+    relatedSlugs: ["automatizari-business", "dashboard-rapoarte", "portal-clienti"],
+  },
+
+  "mentenanta-software": {
+    slug: "mentenanta-software",
+    title: "Mentenanță și dezvoltare continuă pentru aplicații care trebuie să meargă corect.",
+    shortTitle: "Mentenanță software",
+    tagline: "Nu te las cu codul în brațe după lansare.",
+    heroLead: "O aplicație nu e gata la lansare — e gata când funcționează, evoluează cu firma ta și e rezolvată rapid când ceva nu merge. Asta e mentenanța.",
+    ctaText: "Vreau suport pentru aplicația mea",
+    sourcePage: "mentenanta_software_page",
+    seo: {
+      title: "Mentenanță și suport software pentru aplicații web | Programator Personal",
+      description: "Bug fixing, actualizări, funcții noi, monitorizare, optimizare performanță. Suport tehnic pentru aplicații web — fără să rămâi singur cu codul.",
+    },
+    problems: [
+      "Ai o aplicație care nu mai e întreținută — dezvoltatorul anterior nu mai e disponibil",
+      "Bug-uri care apar și nu știi cine să le rezolve",
+      "Aplicația e lentă sau are probleme de performanță",
+      "Ai nevoie de funcții noi dar nu vrei să schimbi tot sistemul",
+      "Nu ai backup automat și nu știi dacă datele sunt în siguranță",
+      "Actualizările de securitate nu sunt aplicate — risc de vulnerabilități",
+    ],
+    howItHelps: [
+      { title: "Disponibil când ai nevoie", body: "Ai un interlocutor tehnic fix. Nu trimiți bilete în gol și nu aștepți 3 zile pentru o întrebare simplă." },
+      { title: "Rezolvare rapidă", body: "Bug-urile critice sunt rezolvate în ore, nu zile. Știu exact ce înseamnă un sistem oprit pentru business-ul tău." },
+      { title: "Evoluție continuă", body: "Adaugi funcții noi pe parcurs, fără să rescrii totul. Sistemul crește cu firma ta." },
+    ],
+    features: [
+      { title: "Bug fixing prioritizat", description: "Bug-uri critice rezolvate în aceeași zi. Bug-uri normale — în 2-3 zile lucrătoare." },
+      { title: "Actualizări de securitate", description: "Pachete, dependințe, certificate SSL — actualizate periodic, nu când e prea târziu." },
+      { title: "Feature-uri noi", description: "Adaugi funcționalități noi în ritmul tău, fără să rescrii ce funcționează." },
+      { title: "Monitorizare uptime", description: "Știi în câteva minute dacă aplicația e jos, înainte să te sune clienții." },
+      { title: "Optimizare performanță", description: "Paginile se încararcă mai rapid, interogările din baza de date sunt optimizate, costurile de server reduse." },
+      { title: "Backup automat", description: "Date salvate automat, restaurabile rapid în caz de incident." },
+      { title: "Suport tehnic", description: "Răspund la întrebări tehnice, explic cum funcționează sistemul, ajut echipa ta să îl folosească." },
+      { title: "Consultanță continuă", description: "Discutăm evoluția sistemului, ce funcționează, ce trebuie schimbat, ce poate fi automatizat în plus." },
+    ],
+    usedBy: [
+      "Firme cu aplicații existente fără suport tehnic",
+      "Startup-uri care au lansat și vor să continue",
+      "Firme care și-au schimbat dezvoltatorul",
+      "Orice business cu aplicație web în producție",
+    ],
+    examples: [
+      { title: "Aplicație CRM moștenită", body: "Aplicație veche de 4 ani, fără documentație, cu bug-uri. Am preluat codul, l-am înțeles, am stabilizat și continuăm să adăugăm funcții." },
+      { title: "Magazin online în creștere", body: "Magazin WooCommerce care scădea în performanță la trafic mare. Optimizat, mutat pe infrastructură mai bună, timp de încărcare redus cu 60%." },
+      { title: "Portal client", body: "Portal construit de noi, menținut lunar — actualizări, backup, funcții noi adăugate la fiecare 2-3 luni." },
+    ],
+    faqs: [
+      { q: "Pot să preiau o aplicație construită de altcineva?", a: "Da, dacă codul e de calitate rezonabilă. Fac întâi o revizie tehnică și îți spun onest dacă merită menținut sau reconstruit." },
+      { q: "Cât costă mentenanța?", a: "De la 300 €/lună pentru suport de bază (bug-uri + actualizări) până la pachete mai mari cu ore incluse pentru dezvoltare continuă." },
+      { q: "Ce se întâmplă dacă e o urgență noaptea sau în weekend?", a: "Depinde de pachet. Pachetele premium includ suport de urgență. Pachetele de bază — rezolv în prima zi lucrătoare." },
+      { q: "Pot să mă opresc oricând?", a: "Da. Nu există contracte pe ani. Lucrăm lunar și poți opri oricând, cu o lună preaviz." },
+    ],
+    relatedSlugs: ["aplicatii-web-custom", "crm-custom", "automatizari-business"],
+  },
+};
+
+export { services };
