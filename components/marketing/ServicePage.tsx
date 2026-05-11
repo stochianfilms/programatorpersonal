@@ -3,6 +3,7 @@ import { MarketingShell } from "./MarketingShell";
 import { FaqAccordion } from "./FaqAccordion";
 import { ServiceContactForm } from "./ServiceContactForm";
 import { services, type ServiceConfig } from "@/data/services";
+import { ServiceVisual } from "./ServiceVisual";
 
 const Arrow = () => (
   <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -86,44 +87,10 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               </div>
             </div>
 
-            {/* Proof card */}
-            {service.examples[0] && (
-              <div
-                style={{
-                  width: 300,
-                  flexShrink: 0,
-                  background: "var(--bg-1)",
-                  border: "1px solid var(--line-2)",
-                  borderRadius: "var(--r-3)",
-                  padding: "var(--s-5)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "var(--s-3)",
-                }}
-                className="pp-only-desktop"
-              >
-                <div className="chip chip-accent" style={{ alignSelf: "flex-start", fontSize: 10 }}>
-                  caz real
-                </div>
-                <div className="mono" style={{ fontSize: 12, fontWeight: 600, color: "var(--fg-1)" }}>
-                  {service.examples[0].title}
-                </div>
-                <p className="body-sm" style={{ margin: 0, color: "var(--fg-2)" }}>
-                  {service.examples[0].body}
-                </p>
-                <div
-                  style={{
-                    borderTop: "1px solid var(--line-1)",
-                    paddingTop: "var(--s-3)",
-                    fontSize: 12,
-                    color: "var(--fg-3)",
-                  }}
-                >
-                  <span className="mono" style={{ color: "var(--accent)" }}>→</span>{" "}
-                  {service.usedBy[0]}
-                </div>
-              </div>
-            )}
+            {/* Service visual mockup */}
+            <div className="pp-only-desktop">
+              <ServiceVisual visualType={service.visualType} />
+            </div>
           </div>
         </div>
       </section>

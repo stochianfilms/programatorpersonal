@@ -1,6 +1,17 @@
 export type ServiceFeature = { title: string; description: string };
 export type FaqItem = { q: string; a: string };
 
+export type VisualType =
+  | "crm-pipeline"
+  | "automation-flow"
+  | "web-app-architecture"
+  | "contract-preview"
+  | "dashboard-kpi"
+  | "booking-calendar"
+  | "client-portal"
+  | "ecommerce-checkout"
+  | "maintenance-system";
+
 export type ServiceConfig = {
   slug: string;
   title: string;
@@ -9,6 +20,7 @@ export type ServiceConfig = {
   heroLead: string;
   ctaText: string;
   sourcePage: string;
+  visualType: VisualType;
   seo: { title: string; description: string };
   problems: string[];
   howItHelps: { title: string; body: string }[];
@@ -22,6 +34,7 @@ export type ServiceConfig = {
 const services: Record<string, ServiceConfig> = {
   "crm-custom": {
     slug: "crm-custom",
+    visualType: "crm-pipeline",
     title: "CRM custom pentru firme care vor să nu mai piardă clienți în Excel și WhatsApp.",
     shortTitle: "CRM custom",
     tagline: "Toți clienții, toate etapele, toate urmăririle — într-un singur loc construit pe felul tău de lucru.",
@@ -80,6 +93,7 @@ const services: Record<string, ServiceConfig> = {
 
   "automatizari-business": {
     slug: "automatizari-business",
+    visualType: "automation-flow",
     title: "Automatizări pentru firme care pierd timp cu sarcini repetitive.",
     shortTitle: "Automatizări business",
     tagline: "Ce faci manual azi, trebuie să se facă singur mâine.",
@@ -136,6 +150,7 @@ const services: Record<string, ServiceConfig> = {
 
   "aplicatii-web-custom": {
     slug: "aplicatii-web-custom",
+    visualType: "web-app-architecture",
     title: "Aplicații web custom construite pe modul în care lucrează firma ta.",
     shortTitle: "Aplicații web custom",
     tagline: "Software-ul care nu există în nicio listă de prețuri pentru că e construit special pentru tine.",
@@ -192,6 +207,7 @@ const services: Record<string, ServiceConfig> = {
 
   "generator-contracte": {
     slug: "generator-contracte",
+    visualType: "contract-preview",
     title: "Generator de contracte pentru firme care vor să scape de copy-paste în Word.",
     shortTitle: "Generator contracte",
     tagline: "Un contract corect, în câteva secunde — cu datele clientului completate automat.",
@@ -248,6 +264,7 @@ const services: Record<string, ServiceConfig> = {
 
   "dashboard-rapoarte": {
     slug: "dashboard-rapoarte",
+    visualType: "dashboard-kpi",
     title: "Dashboard-uri și rapoarte automate pentru decizii mai clare.",
     shortTitle: "Dashboard-uri și rapoarte",
     tagline: "Datele firmei tale, vizibile într-un singur loc, actualizate live — fără Excel.",
@@ -304,6 +321,7 @@ const services: Record<string, ServiceConfig> = {
 
   "platforma-rezervari": {
     slug: "platforma-rezervari",
+    visualType: "booking-calendar",
     title: "Platformă de rezervări construită pe modul în care lucrează firma ta.",
     shortTitle: "Platformă rezervări",
     tagline: "Clienții rezervă singuri. Tu ești anunțat. Programul se completează fără telefoane.",
@@ -362,6 +380,7 @@ const services: Record<string, ServiceConfig> = {
 
   "portal-clienti": {
     slug: "portal-clienti",
+    visualType: "client-portal",
     title: "Portal pentru clienți, ca oamenii să găsească singuri ce au nevoie.",
     shortTitle: "Portal clienți",
     tagline: "Clientul intră, vede statusul, descarcă documentul, plătește factura. Tu nu răspunzi la 10 emailuri pe zi.",
@@ -419,6 +438,7 @@ const services: Record<string, ServiceConfig> = {
 
   "magazin-online-custom": {
     slug: "magazin-online-custom",
+    visualType: "ecommerce-checkout",
     title: "Magazin online custom pentru firme care vor mai mult decât un template.",
     shortTitle: "Magazin online custom",
     tagline: "Când Shopify nu mai încape pe regulile tale de business.",
@@ -475,6 +495,7 @@ const services: Record<string, ServiceConfig> = {
 
   "mentenanta-software": {
     slug: "mentenanta-software",
+    visualType: "maintenance-system",
     title: "Mentenanță și dezvoltare continuă pentru aplicații care trebuie să meargă corect.",
     shortTitle: "Mentenanță software",
     tagline: "Nu te las cu codul în brațe după lansare.",
