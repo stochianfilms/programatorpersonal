@@ -1010,11 +1010,112 @@ a.pp-link:hover::after, .pp-link a:hover::after { transform: scaleX(1); transfor
   border-bottom: 1px solid var(--line-1);
   color: var(--fg-1);
 }
+/* Nav trigger button */
+.pp-nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: var(--fg-2);
+  border-radius: var(--r-pill);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color .15s ease, background .15s ease;
+}
+.pp-nav-trigger:hover,
+.pp-nav-trigger--open { color: var(--fg-1); background: rgba(255,255,255,0.04); }
+
+/* Mega-menu panel */
+.pp-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--line-2);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+  z-index: 49;
+  animation: pp-mega-in .15s ease;
+}
+@keyframes pp-mega-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.pp-mega-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  padding-bottom: 28px;
+}
+.pp-mega-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+.pp-mega-grid {
+  display: grid;
+  gap: 4px;
+}
+.pp-mega-link {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border-radius: var(--r-2);
+  transition: background .15s ease;
+}
+.pp-mega-link:hover { background: rgba(255,255,255,0.04); }
+.pp-mega-link-label {
+  font-size: 14px;
+  color: var(--fg-1);
+  font-weight: 450;
+}
+.pp-mega-link-desc {
+  font-size: 12px;
+  color: var(--fg-3);
+}
+
+/* Mobile sub-menu */
+.pp-mobile-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 17px;
+  color: var(--fg-1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--line-1);
+}
+.pp-mobile-submenu {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 8px 16px;
+  border-bottom: 1px solid var(--line-1);
+}
+.pp-mobile-sublink {
+  font-size: 15px;
+  color: var(--fg-2);
+  padding: 10px 8px;
+}
+.pp-mobile-sublink:hover { color: var(--fg-1); }
+
+/* Desktop-only nav visibility */
+.pp-only-desktop-nav { display: flex; }
+
 @media (max-width: 900px) {
   .pp-nav { display: none; }
   .pp-only-desktop { display: none; }
+  .pp-only-desktop-nav { display: none; }
   .pp-only-mobile, .pp-only-mobile-cta { display: inline-flex; }
   .pp-burger { display: flex; }
+  .pp-mega { display: none; }
 }
 
 
@@ -2905,36 +3006,32 @@ a.pp-link:hover::after, .pp-link a:hover::after { transform: scaleX(1); transfor
         padding: 80px 0 32px;
         position: relative;
       }
-      .pp-footer-grid {
+      .pp-footer-main {
         display: grid;
-        grid-template-columns: 1fr 1.4fr;
+        grid-template-columns: 280px 1fr;
         gap: 80px;
         margin-bottom: 64px;
       }
-      .pp-footer-loc {
-        font-size: 12px;
-        margin-top: 24px;
-        color: var(--fg-2);
-      }
-      .pp-footer-cols {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
-      }
-      .pp-footer-cols ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      .pp-footer-brand {
         display: flex;
         flex-direction: column;
-        gap: 10px;
       }
-      .pp-footer-cols a {
+      .pp-footer-cta-block {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line-1);
+      }
+      .pp-footer-nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 32px;
+      }
+      .pp-footer-link {
         font-size: 14px;
         color: var(--fg-2);
         transition: color 0.15s ease;
       }
-      .pp-footer-cols a:hover {
+      .pp-footer-link:hover {
         color: var(--fg-1);
       }
       .pp-footer-bottom {
@@ -2957,17 +3054,19 @@ a.pp-link:hover::after, .pp-link a:hover::after { transform: scaleX(1); transfor
       .pp-footer-legal a:hover {
         color: var(--fg-1);
       }
+      @media (max-width: 1100px) {
+        .pp-footer-nav {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
       @media (max-width: 900px) {
-        .pp-footer-grid {
+        .pp-footer-main {
           grid-template-columns: 1fr;
           gap: 40px;
         }
-        .pp-footer-cols {
-          grid-template-columns: 1fr 1fr;
-        }
       }
       @media (max-width: 600px) {
-        .pp-footer-cols {
-          grid-template-columns: 1fr;
+        .pp-footer-nav {
+          grid-template-columns: 1fr 1fr;
         }
       }
