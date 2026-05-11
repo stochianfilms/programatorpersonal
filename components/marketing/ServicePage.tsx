@@ -4,6 +4,8 @@ import { FaqAccordion } from "./FaqAccordion";
 import { ServiceContactForm } from "./ServiceContactForm";
 import { services, type ServiceConfig } from "@/data/services";
 import { ServiceVisual } from "./ServiceVisual";
+import { siteConfig } from "@/content/site";
+import { getServiceMedia } from "@/lib/media";
 
 const Arrow = () => (
   <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -28,6 +30,11 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
   const relatedServices = service.relatedSlugs
     .map((slug) => services[slug])
     .filter(Boolean);
+  const primaryCta = service.primaryCta ?? siteConfig.ctas.serviceDefault;
+  const secondaryCta = service.secondaryCta ?? siteConfig.ctas.portfolio;
+  const serviceMedia = getServiceMedia(service);
+  const visibleProblems = service.problems.slice(0, 3);
+  const extraProblems = service.problems.slice(3);
 
   const processSteps = [
     { n: "01", t: "Discutăm problema", d: "O conversație de 30 de minute. Tu îmi spui ce nu funcționează, eu pun întrebări." },
@@ -77,19 +84,22 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               <p className="lead" style={{ maxWidth: 620, color: "var(--fg-2)" }}>
                 {service.heroLead}
               </p>
+              <p className="body" style={{ maxWidth: 620, color: "var(--fg-3)", marginTop: "var(--s-4)" }}>
+                {service.pageAngle}
+              </p>
               <div style={{ display: "flex", gap: "var(--s-4)", flexWrap: "wrap", marginTop: "var(--s-6)" }}>
-                <a href="#contact" className="btn btn-primary">
-                  {service.ctaText} <Arrow />
-                </a>
-                <Link href="/portofoliu" className="btn btn-secondary">
-                  Proiecte similare <ArrowRight />
+                <Link href={primaryCta.href} className="btn btn-primary">
+                  {primaryCta.label} <Arrow />
+                </Link>
+                <Link href={secondaryCta.href} className="btn btn-secondary">
+                  {secondaryCta.label} <ArrowRight />
                 </Link>
               </div>
             </div>
 
             {/* Service visual mockup */}
             <div className="pp-only-desktop">
-              <ServiceVisual visualType={service.visualType} />
+              <ServiceVisual visual={service.visual} caption={serviceMedia.caption} />
             </div>
           </div>
         </div>
@@ -109,7 +119,7 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
             </h2>
           </div>
           <div className="grid grid-3">
-            {service.problems.map((p, i) => (
+            {visibleProblems.map((p, i) => (
               <div key={i} className="card">
                 <span className="mono" style={{ fontSize: 11, color: "var(--fg-4)", display: "block", marginBottom: 8 }}>
                   {String(i + 1).padStart(2, "0")}
@@ -120,6 +130,25 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
               </div>
             ))}
           </div>
+          {extraProblems.length > 0 && (
+            <details className="card" style={{ marginTop: "var(--s-4)" }}>
+              <summary className="mono" style={{ cursor: "pointer", color: "var(--accent)", fontSize: 12 }}>
+                Vezi mai multe semnale că sistemul actual te încetinește
+              </summary>
+              <div className="grid grid-3" style={{ marginTop: "var(--s-4)" }}>
+                {extraProblems.map((p, i) => (
+                  <div key={i} style={{ borderTop: "1px solid var(--line-1)", paddingTop: "var(--s-3)" }}>
+                    <span className="mono" style={{ fontSize: 11, color: "var(--fg-4)", display: "block", marginBottom: 8 }}>
+                      {String(i + 4).padStart(2, "0")}
+                    </span>
+                    <p className="body-sm" style={{ margin: 0, color: "var(--fg-2)" }}>
+                      {p}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </details>
+          )}
         </div>
       </section>
 
@@ -392,14 +421,14 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
                 <span className="dot" /> răspund în 24h, în zilele lucrătoare
               </div>
               <h2 className="h-1" style={{ marginBottom: "var(--s-4)" }}>
-                {service.ctaText}
+                {primaryCta.label}
               </h2>
               <p className="lead" style={{ marginBottom: "var(--s-6)" }}>
                 Spune-mi ce problemă vrei să rezolvi. Îți propun o soluție clară și realistă — fără audit de 2 săptămâni.
               </p>
               <ServiceContactForm
                 sourcePage={service.sourcePage}
-                ctaText={service.ctaText}
+                ctaText={primaryCta.label}
                 serviceName={service.shortTitle}
               />
             </div>

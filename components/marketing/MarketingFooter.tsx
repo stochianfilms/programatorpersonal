@@ -30,9 +30,15 @@ const footerCols = [
     heading: "Resurse",
     items: siteConfig.navigation.resources,
   },
+  {
+    heading: "Legal",
+    items: siteConfig.navigation.legal,
+  },
 ];
 
 export function MarketingFooter() {
+  const primaryCta = siteConfig.ctas.primary;
+
   return (
     <footer className="pp-footer">
       <div className="container">
@@ -70,7 +76,7 @@ export function MarketingFooter() {
                 {"{·}"}
               </span>
               <span>
-                Programator <span style={{ color: "var(--fg-3)" }}>Personal</span>
+                {siteConfig.brand.name.split(" ")[0]} <span style={{ color: "var(--fg-3)" }}>{siteConfig.brand.name.split(" ").slice(1).join(" ")}</span>
               </span>
             </Link>
 
@@ -78,19 +84,22 @@ export function MarketingFooter() {
               className="body-sm"
               style={{ marginTop: 16, color: "var(--fg-2)", maxWidth: 300, lineHeight: 1.6 }}
             >
-              {siteConfig.description}
+              {siteConfig.brand.description}
             </p>
 
             {/* Mini CTA */}
             <div className="pp-footer-cta-block">
+              <h2 className="h-3" style={{ marginBottom: 8 }}>
+                {siteConfig.footer.miniCta.title}
+              </h2>
               <p
                 className="body-sm"
                 style={{ color: "var(--fg-3)", marginBottom: 12 }}
               >
-                Ai un proces care îți mănâncă timp?
+                {siteConfig.footer.miniCta.text}
               </p>
-              <Link href="/contact" className="btn btn-primary btn-sm">
-                Programează o discuție <Arrow />
+              <Link href={siteConfig.footer.miniCta.cta.href} className="btn btn-primary btn-sm">
+                {siteConfig.footer.miniCta.cta.label} <Arrow />
               </Link>
             </div>
 
@@ -98,7 +107,7 @@ export function MarketingFooter() {
               className="mono"
               style={{ marginTop: 32, fontSize: 12, color: "var(--fg-4)" }}
             >
-              {siteConfig.contact.location}
+              {siteConfig.brand.location}
             </div>
             <div style={{ marginTop: 6 }}>
               <a
@@ -109,6 +118,17 @@ export function MarketingFooter() {
                 {siteConfig.contact.email}
               </a>
             </div>
+            {siteConfig.contact.phone && siteConfig.contact.phoneHref && (
+              <div style={{ marginTop: 6 }}>
+                <a
+                  href={siteConfig.contact.phoneHref}
+                  className="mono"
+                  style={{ fontSize: 12, color: "var(--fg-3)" }}
+                >
+                  {siteConfig.contact.phone}
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Nav columns */}
@@ -146,13 +166,46 @@ export function MarketingFooter() {
                 </ul>
               </div>
             ))}
+            <div>
+              <div className="eyebrow" style={{ marginBottom: 16 }}>
+                Contact
+              </div>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 10,
+                }}
+              >
+                <li>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="pp-footer-link">
+                    {siteConfig.contact.email}
+                  </a>
+                </li>
+                {siteConfig.contact.phone && siteConfig.contact.phoneHref && (
+                  <li>
+                    <a href={siteConfig.contact.phoneHref} className="pp-footer-link">
+                      {siteConfig.contact.phone}
+                    </a>
+                  </li>
+                )}
+                <li>
+                  <Link href={primaryCta.href} className="pp-footer-link">
+                    {primaryCta.label}
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="pp-footer-bottom">
           <div className="mono" style={{ fontSize: 12, color: "var(--fg-4)" }}>
-            © 2026 {siteConfig.name}
+            © 2026 {siteConfig.brand.name}
           </div>
           <div className="pp-footer-legal">
             {siteConfig.navigation.legal.map(({ label, href }) => (

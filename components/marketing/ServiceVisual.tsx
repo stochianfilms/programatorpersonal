@@ -1,11 +1,28 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import type { MediaKey } from "@/content/site";
 import type { VisualType } from "@/data/services";
+import { getMedia, getFallbackVisual } from "@/lib/media";
+
+type ServiceVisualProps = {
+  visual?: {
+    type: VisualType;
+    mediaKey?: MediaKey;
+    caption?: string;
+  };
+  visualType?: VisualType;
+  mediaKey?: MediaKey;
+  caption?: string;
+};
 
 // ─── shared shell ────────────────────────────────────────────────────────────
 
 const VisualShell = ({ label, accent, children }: { label: string; accent?: boolean; children: React.ReactNode }) => (
   <div
     style={{
-      width: 300,
+      width: "min(380px, 100%)",
       flexShrink: 0,
       background: "var(--bg-1)",
       border: "1px solid var(--line-2)",
@@ -13,6 +30,7 @@ const VisualShell = ({ label, accent, children }: { label: string; accent?: bool
       overflow: "hidden",
       display: "flex",
       flexDirection: "column",
+      boxShadow: "0 24px 80px rgba(0,0,0,0.34), 0 0 60px rgba(132,204,22,0.05)",
     }}
   >
     <div
@@ -483,7 +501,7 @@ const WebAppArchitecture = () => {
 
 // ─── Public export ────────────────────────────────────────────────────────────
 
-export function ServiceVisual({ visualType }: { visualType: VisualType }) {
+function RenderFallbackVisual({ visualType }: { visualType: VisualType }) {
   switch (visualType) {
     case "crm-pipeline":        return <CRMPipeline />;
     case "automation-flow":     return <AutomationFlow />;
@@ -495,4 +513,67 @@ export function ServiceVisual({ visualType }: { visualType: VisualType }) {
     case "maintenance-system":  return <MaintenanceSystem />;
     case "web-app-architecture":return <WebAppArchitecture />;
   }
+}
+
+export function ServiceVisual({ visual, visualType, mediaKey, caption }: ServiceVisualProps) {
+  const type = visual?.type ?? visualType ?? "web-app-architecture";
+  const resolvedMediaKey = visual?.mediaKey ?? mediaKey;
+  const media = getMedia(resolvedMediaKey);
+  const fallback = getFallbackVisual(type);
+  const resolvedCaption = visual?.caption ?? caption ?? media?.caption;
+  const [imageReady, setImageReady] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
+
+  if (!media || imageFailed) {
+    return (
+      <figure style={{ margin: 0 }}>
+        <RenderFallbackVisual visualType={fallback.type} />
+        {resolvedCaption && (
+          <figcaption className="mono" style={{ marginTop: 10, fontSize: 11, color: "var(--fg-4)", textAlign: "center" }}>
+            {resolvedCaption}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
+  return (
+    <figure style={{ margin: 0, width: "min(560px, 100%)" }}>
+      <div
+        style={{
+          position: "relative",
+          minHeight: 300,
+          borderRadius: "var(--r-3)",
+          overflow: "hidden",
+          border: "1px solid var(--line-2)",
+          background: "var(--bg-1)",
+          boxShadow: "0 24px 80px rgba(0,0,0,0.34), 0 0 60px rgba(132,204,22,0.06)",
+        }}
+      >
+        {!imageReady && (
+          <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center" }}>
+            <RenderFallbackVisual visualType={fallback.type} />
+          </div>
+        )}
+        <Image
+          src={media.src}
+          alt={media.alt}
+          fill
+          sizes="(min-width: 1024px) 560px, 100vw"
+          style={{
+            objectFit: "cover",
+            opacity: imageReady ? 1 : 0,
+            transition: "opacity .2s ease",
+          }}
+          onLoad={() => setImageReady(true)}
+          onError={() => setImageFailed(true)}
+        />
+      </div>
+      {resolvedCaption && (
+        <figcaption className="mono" style={{ marginTop: 10, fontSize: 11, color: "var(--fg-4)", textAlign: "center" }}>
+          {resolvedCaption}
+        </figcaption>
+      )}
+    </figure>
+  );
 }

@@ -3,18 +3,13 @@
 import { useEffect, useState } from "react";
 import { Logo } from "./atoms/Logo";
 import { Arrow } from "./atoms/Icons";
-
-const navItems: [string, string][] = [
-  ["Servicii", "/servicii"],
-  ["Automatizări", "/automatizari-business"],
-  ["CRM", "/crm-custom"],
-  ["Portofoliu", "/portofoliu"],
-  ["Contact", "/contact"],
-];
+import { siteConfig } from "@/content/site";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navItems = siteConfig.navigation.primary;
+  const primaryCta = siteConfig.ctas.primary;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -27,16 +22,16 @@ export function Header() {
       <div className="pp-header-inner container">
         <Logo size={18} />
         <nav className="pp-nav">
-          {navItems.map(([label, href]) => (
+          {navItems.map(({ label, href }) => (
             <a key={label} href={href} className="pp-nav-link">{label}</a>
           ))}
         </nav>
         <div className="pp-header-cta">
-          <a href="#contact" className="btn btn-ghost btn-sm pp-only-desktop">
-            Cere o estimare <Arrow />
+          <a href={primaryCta.href} className="btn btn-ghost btn-sm pp-only-desktop">
+            {primaryCta.label} <Arrow />
           </a>
-          <a href="#contact" className="btn btn-primary btn-sm pp-only-mobile-cta">
-            Estimare <Arrow />
+          <a href={primaryCta.href} className="btn btn-primary btn-sm pp-only-mobile-cta">
+            Discuție <Arrow />
           </a>
           <button
             className="pp-burger pp-only-mobile"
@@ -50,7 +45,7 @@ export function Header() {
       </div>
       {mobileOpen && (
         <div className="pp-mobile-menu">
-          {navItems.map(([label, href]) => (
+          {navItems.map(({ label, href }) => (
             <a
               key={label}
               href={href}
@@ -61,12 +56,12 @@ export function Header() {
             </a>
           ))}
           <a
-            href="#contact"
+            href={primaryCta.href}
             className="btn btn-primary"
             style={{ marginTop: 12, width: "100%", justifyContent: "center" }}
             onClick={() => setMobileOpen(false)}
           >
-            Cere o estimare <Arrow />
+            {primaryCta.label} <Arrow />
           </a>
         </div>
       )}

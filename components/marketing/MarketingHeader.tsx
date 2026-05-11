@@ -4,26 +4,29 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { siteConfig, type NavItem, type NavItemRich } from "@/content/site";
 
-type MegaKey = "Servicii" | "Soluții" | "Industrii";
+type MegaKey = "services" | "solutions" | "industries";
 
 const megaData: Record<
   MegaKey,
-  { lead: string; items: NavItem[] | NavItemRich[]; cols: 2 | 3 }
+  { label: string; lead: string; items: NavItem[] | NavItemRich[]; cols: 2 | 3 }
 > = {
-  Servicii: {
-    lead: "Software construit pe procesele firmei tale.",
+  services: {
+    label: siteConfig.navigation.megaMenus.services.label,
+    lead: siteConfig.navigation.megaMenus.services.lead,
     items: siteConfig.navigation.services,
-    cols: 3,
+    cols: siteConfig.navigation.megaMenus.services.cols as 3,
   },
-  Soluții: {
-    lead: "Alege ce problemă vrei să rezolvi.",
+  solutions: {
+    label: siteConfig.navigation.megaMenus.solutions.label,
+    lead: siteConfig.navigation.megaMenus.solutions.lead,
     items: siteConfig.navigation.solutions,
-    cols: 2,
+    cols: siteConfig.navigation.megaMenus.solutions.cols as 2,
   },
-  Industrii: {
-    lead: "Software specific domeniului tău.",
+  industries: {
+    label: siteConfig.navigation.megaMenus.industries.label,
+    lead: siteConfig.navigation.megaMenus.industries.lead,
     items: siteConfig.navigation.industries,
-    cols: 2,
+    cols: siteConfig.navigation.megaMenus.industries.cols as 2,
   },
 };
 
@@ -67,7 +70,7 @@ const Logo = () => (
       {"{·}"}
     </span>
     <span>
-      Programator <span style={{ color: "var(--fg-3)" }}>Personal</span>
+      {siteConfig.brand.name.split(" ")[0]} <span style={{ color: "var(--fg-3)" }}>{siteConfig.brand.name.split(" ").slice(1).join(" ")}</span>
     </span>
   </Link>
 );
@@ -133,11 +136,10 @@ export function MarketingHeader() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   };
 
-  const plainLinks = [
-    { label: "Portofoliu", href: "/portofoliu" },
-    { label: "Prețuri", href: "/preturi" },
-    { label: "Contact", href: "/contact" },
-  ];
+  const plainLinks = siteConfig.navigation.primary.filter(
+    (item) => !["Servicii", "Soluții", "Industrii"].includes(item.label)
+  );
+  const primaryCta = siteConfig.ctas.primary;
 
   return (
     <header
@@ -161,7 +163,7 @@ export function MarketingHeader() {
                 className={`pp-nav-link pp-nav-trigger${activeMenu === key ? " pp-nav-trigger--open" : ""}`}
                 aria-expanded={activeMenu === key}
               >
-                {key} <Chevron open={activeMenu === key} />
+                {megaData[key].label} <Chevron open={activeMenu === key} />
               </button>
             </div>
           ))}
@@ -173,10 +175,10 @@ export function MarketingHeader() {
         </nav>
 
         <div className="pp-header-cta">
-          <Link href="/contact" className="btn btn-ghost btn-sm pp-only-desktop-nav">
-            Programează o discuție <Arrow />
+          <Link href={primaryCta.href} className="btn btn-ghost btn-sm pp-only-desktop-nav">
+            {primaryCta.label} <Arrow />
           </Link>
-          <Link href="/contact" className="btn btn-primary btn-sm pp-only-mobile-cta">
+          <Link href={primaryCta.href} className="btn btn-primary btn-sm pp-only-mobile-cta">
             Discuție <Arrow />
           </Link>
           <button
@@ -202,7 +204,7 @@ export function MarketingHeader() {
         >
           <div className="container pp-mega-inner">
             <div className="pp-mega-header">
-              <span className="eyebrow">{activeMenu}</span>
+              <span className="eyebrow">{megaData[activeMenu].label}</span>
               <p className="body-sm" style={{ color: "var(--fg-3)", margin: 0 }}>
                 {megaData[activeMenu].lead}
               </p>
@@ -275,12 +277,12 @@ export function MarketingHeader() {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href={primaryCta.href}
             className="btn btn-primary"
             style={{ marginTop: 12, width: "100%", justifyContent: "center" }}
             onClick={() => setMobileOpen(false)}
           >
-            Programează o discuție <Arrow />
+            {primaryCta.label} <Arrow />
           </Link>
         </div>
       )}

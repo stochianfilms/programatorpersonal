@@ -1,3 +1,5 @@
+import type { CtaItem, MediaKey } from "@/content/site";
+
 export type ServiceFeature = { title: string; description: string };
 export type FaqItem = { q: string; a: string };
 
@@ -18,6 +20,14 @@ export type ServiceConfig = {
   shortTitle: string;
   tagline: string;
   heroLead: string;
+  pageAngle: string;
+  primaryCta?: CtaItem;
+  secondaryCta?: CtaItem;
+  visual: {
+    type: VisualType;
+    mediaKey?: MediaKey;
+    caption?: string;
+  };
   ctaText: string;
   sourcePage: string;
   visualType: VisualType;
@@ -34,11 +44,19 @@ export type ServiceConfig = {
 const services: Record<string, ServiceConfig> = {
   "crm-custom": {
     slug: "crm-custom",
+    visual: {
+      type: "crm-pipeline",
+      mediaKey: "crmPipeline",
+      caption: "Pipeline CRM cu lead-uri, clienți, proiecte și contracte în același flux.",
+    },
     visualType: "crm-pipeline",
     title: "CRM custom pentru firme care vor să nu mai piardă clienți în Excel și WhatsApp.",
     shortTitle: "CRM custom",
     tagline: "Toți clienții, toate etapele, toate urmăririle — într-un singur loc construit pe felul tău de lucru.",
     heroLead: "Un CRM gata făcut nu se potrivește niciodată exact. Construim un sistem care reflectă procesele reale ale firmei tale, nu invers.",
+    pageAngle: "Transformă lead-urile, conversațiile și contractele într-un pipeline clar, urmărit de toată echipa.",
+    primaryCta: { label: "Vreau un CRM pentru firma mea", href: "/contact" },
+    secondaryCta: { label: "Vreau un sistem asemănător", href: "/contact" },
     ctaText: "Vreau un CRM pentru firma mea",
     sourcePage: "crm_custom_page",
     seo: {
@@ -93,11 +111,19 @@ const services: Record<string, ServiceConfig> = {
 
   "automatizari-business": {
     slug: "automatizari-business",
+    visual: {
+      type: "automation-flow",
+      mediaKey: "automationFlow",
+      caption: "Flux automatizat de la formular și CRM până la email, notificări și documente.",
+    },
     visualType: "automation-flow",
     title: "Automatizări pentru firme care pierd timp cu sarcini repetitive.",
     shortTitle: "Automatizări business",
     tagline: "Ce faci manual azi, trebuie să se facă singur mâine.",
     heroLead: "Emailuri repetitive, rapoarte copiate din sistem în sistem, notificări trimise manual — toate astea pot dispărea. Îți construim fluxuri care rulează fără să te atingi de ele.",
+    pageAngle: "Identificăm pașii repetați și îi legăm într-un flux care rulează singur, cu loguri și alerte.",
+    primaryCta: { label: "Spune-mi ce vrei să automatizăm", href: "/contact" },
+    secondaryCta: { label: "Cere o estimare", href: "/contact" },
     ctaText: "Spune-mi ce faci manual și îți spun ce putem automatiza",
     sourcePage: "automatizari_business_page",
     seo: {
@@ -150,11 +176,19 @@ const services: Record<string, ServiceConfig> = {
 
   "aplicatii-web-custom": {
     slug: "aplicatii-web-custom",
+    visual: {
+      type: "web-app-architecture",
+      mediaKey: "architectureMap",
+      caption: "Hartă modulară pentru aplicații web construite pe fluxurile firmei.",
+    },
     visualType: "web-app-architecture",
     title: "Aplicații web custom construite pe modul în care lucrează firma ta.",
     shortTitle: "Aplicații web custom",
     tagline: "Software-ul care nu există în nicio listă de prețuri pentru că e construit special pentru tine.",
     heroLead: "Niciun soft gata făcut nu se potrivește exact proceselor tale. Construim aplicații web care reflectă cum lucrezi tu, nu invers.",
+    pageAngle: "Construim produsul intern sau platforma custom ca un sistem modular, nu ca un site cu formulare lipite între ele.",
+    primaryCta: { label: "Vreau o aplicație web custom", href: "/contact" },
+    secondaryCta: { label: "Cere o estimare", href: "/contact" },
     ctaText: "Vreau o aplicație web custom",
     sourcePage: "aplicatii_web_custom_page",
     seo: {
@@ -207,11 +241,19 @@ const services: Record<string, ServiceConfig> = {
 
   "generator-contracte": {
     slug: "generator-contracte",
+    visual: {
+      type: "contract-preview",
+      mediaKey: "contractGenerator",
+      caption: "Preview de document cu variabile completate automat din datele clientului.",
+    },
     visualType: "contract-preview",
     title: "Generator de contracte pentru firme care vor să scape de copy-paste în Word.",
     shortTitle: "Generator contracte",
     tagline: "Un contract corect, în câteva secunde — cu datele clientului completate automat.",
     heroLead: "Editezi același Word de 5 ani, înlocuiești datele clientului de mână, trimiți pe email și speri că ai prins toate greșelile. Există o variantă mai bună.",
+    pageAngle: "Înlocuiește copy-paste-ul din Word cu template-uri controlate, variabile și status clar.",
+    primaryCta: { label: "Vreau să generez contracte mai rapid", href: "/contact" },
+    secondaryCta: { label: "Vreau un sistem asemănător", href: "/contact" },
     ctaText: "Vreau să generez contracte mai rapid",
     sourcePage: "generator_contracte_page",
     seo: {
@@ -264,11 +306,19 @@ const services: Record<string, ServiceConfig> = {
 
   "dashboard-rapoarte": {
     slug: "dashboard-rapoarte",
+    visual: {
+      type: "dashboard-kpi",
+      mediaKey: "dashboardReports",
+      caption: "KPI cards, chart și rapoarte live într-un dashboard de management.",
+    },
     visualType: "dashboard-kpi",
     title: "Dashboard-uri și rapoarte automate pentru decizii mai clare.",
     shortTitle: "Dashboard-uri și rapoarte",
     tagline: "Datele firmei tale, vizibile într-un singur loc, actualizate live — fără Excel.",
     heroLead: "Dacă iei decizii pe baza unui raport lunar făcut manual, probabil iei decizii cu întârziere. Construim dashboard-uri care îți arată ce se întâmplă acum.",
+    pageAngle: "Mutăm raportarea din Excel-uri lunare într-un dashboard viu, conectat la sursele firmei.",
+    primaryCta: { label: "Vreau să văd datele firmei într-un singur loc", href: "/contact" },
+    secondaryCta: { label: "Cere o estimare", href: "/contact" },
     ctaText: "Vreau să văd datele firmei într-un singur loc",
     sourcePage: "dashboard_rapoarte_page",
     seo: {
@@ -321,11 +371,19 @@ const services: Record<string, ServiceConfig> = {
 
   "platforma-rezervari": {
     slug: "platforma-rezervari",
+    visual: {
+      type: "booking-calendar",
+      mediaKey: "bookingCalendar",
+      caption: "Calendar cu sloturi, confirmări și notificări automate pentru clienți.",
+    },
     visualType: "booking-calendar",
     title: "Platformă de rezervări construită pe modul în care lucrează firma ta.",
     shortTitle: "Platformă rezervări",
     tagline: "Clienții rezervă singuri. Tu ești anunțat. Programul se completează fără telefoane.",
     heroLead: "Calendarul tău e gestionat pe WhatsApp, telefon și agendă fizică. Există un mod mai simplu — pentru tine și pentru client.",
+    pageAngle: "Transformă programările din conversații împrăștiate într-un calendar clar, cu reguli și notificări.",
+    primaryCta: { label: "Vreau o platformă de rezervări", href: "/contact" },
+    secondaryCta: { label: "Vreau un sistem asemănător", href: "/contact" },
     ctaText: "Vreau o platformă de rezervări",
     sourcePage: "platforma_rezervari_page",
     seo: {
@@ -380,11 +438,19 @@ const services: Record<string, ServiceConfig> = {
 
   "portal-clienti": {
     slug: "portal-clienti",
+    visual: {
+      type: "client-portal",
+      mediaKey: "clientPortal",
+      caption: "Portal client cu documente, status proiect, facturi și comunicare centralizată.",
+    },
     visualType: "client-portal",
     title: "Portal pentru clienți, ca oamenii să găsească singuri ce au nevoie.",
     shortTitle: "Portal clienți",
     tagline: "Clientul intră, vede statusul, descarcă documentul, plătește factura. Tu nu răspunzi la 10 emailuri pe zi.",
     heroLead: "Clienții tăi te sună sau îți scriu pe email pentru lucruri pe care ar trebui să le găsească singuri. Un portal client rezolvă asta.",
+    pageAngle: "Oferă clienților un spațiu privat în care văd progresul, documentele și acțiunile următoare.",
+    primaryCta: { label: "Vreau portal pentru clienții mei", href: "/contact" },
+    secondaryCta: { label: "Vreau un sistem asemănător", href: "/contact" },
     ctaText: "Vreau portal pentru clienții mei",
     sourcePage: "portal_clienti_page",
     seo: {
@@ -438,11 +504,19 @@ const services: Record<string, ServiceConfig> = {
 
   "magazin-online-custom": {
     slug: "magazin-online-custom",
+    visual: {
+      type: "ecommerce-checkout",
+      mediaKey: "ecommerceCheckout",
+      caption: "Checkout custom cu produse, livrare, plăți și integrare cu procesele interne.",
+    },
     visualType: "ecommerce-checkout",
     title: "Magazin online custom pentru firme care vor mai mult decât un template.",
     shortTitle: "Magazin online custom",
     tagline: "Când Shopify nu mai încape pe regulile tale de business.",
     heroLead: "Produse cu variații complexe, prețuri pe volum, comenzi cu configurații speciale, flux de livrare propriu — unele business-uri depășesc orice platformă standard.",
+    pageAngle: "Construim experiența de cumpărare în jurul regulilor tale comerciale și operaționale.",
+    primaryCta: { label: "Vreau magazin online custom", href: "/contact" },
+    secondaryCta: { label: "Cere o estimare", href: "/contact" },
     ctaText: "Vreau magazin online custom",
     sourcePage: "magazin_online_custom_page",
     seo: {
@@ -495,11 +569,19 @@ const services: Record<string, ServiceConfig> = {
 
   "mentenanta-software": {
     slug: "mentenanta-software",
+    visual: {
+      type: "maintenance-system",
+      mediaKey: "serviceTicketSystem",
+      caption: "Ticket board, uptime, monitorizare și status pentru aplicații în producție.",
+    },
     visualType: "maintenance-system",
     title: "Mentenanță și dezvoltare continuă pentru aplicații care trebuie să meargă corect.",
     shortTitle: "Mentenanță software",
     tagline: "Nu te las cu codul în brațe după lansare.",
     heroLead: "O aplicație nu e gata la lansare — e gata când funcționează, evoluează cu firma ta și e rezolvată rapid când ceva nu merge. Asta e mentenanța.",
+    pageAngle: "Ținem aplicația sănătoasă prin monitorizare, ticketing, mentenanță și îmbunătățiri controlate.",
+    primaryCta: { label: "Vreau suport pentru aplicația mea", href: "/contact" },
+    secondaryCta: { label: "Programează o discuție", href: "/contact" },
     ctaText: "Vreau suport pentru aplicația mea",
     sourcePage: "mentenanta_software_page",
     seo: {
