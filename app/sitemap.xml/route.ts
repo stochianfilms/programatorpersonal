@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from 'next/server';
 import { siteConfig } from '@/content/site';
 import { getServices, getCaseStudies, getBlogArticles } from '@/lib/db';
