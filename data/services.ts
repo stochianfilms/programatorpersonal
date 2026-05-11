@@ -630,6 +630,111 @@ const services: Record<string, ServiceConfig> = {
     ],
     relatedSlugs: ["aplicatii-web-custom", "crm-custom", "automatizari-business"],
   },
+
+  "back-office-custom": {
+    slug: "back-office-custom",
+    visual: {
+      type: "maintenance-system",
+      caption: "Back-office custom cu fișe, tickete, documente, statusuri și rapoarte integrate.",
+    },
+    visualType: "maintenance-system",
+    title: "Back-office custom pentru firme cu procese operaționale complexe.",
+    shortTitle: "Back-office custom",
+    tagline: "Fișe, tickete, documente, statusuri, clienți și rapoarte într-un sistem intern clar.",
+    heroLead:
+      "Dacă echipa ta urmărește solicitări, fișe, garanții, comenzi, contracte sau documente în mai multe locuri, putem construi un back-office care le aduce într-un singur flux.",
+    pageAngle:
+      "Transformăm procesele interne fragmentate într-un sistem operațional clar pentru echipă, clienți și management.",
+    primaryCta: { label: "Vreau back-office custom", href: "/contact" },
+    secondaryCta: { label: "Vreau un sistem asemănător", href: "/contact" },
+    ctaText: "Vreau back-office custom",
+    sourcePage: "back_office_custom_page",
+    seo: {
+      title: "Back-office custom pentru firme operaționale | Programator Personal",
+      description:
+        "Sistem intern custom cu fișe, tickete, documente, statusuri, clienți și rapoarte. Construit pe procesele reale ale firmei tale — fără Excel, fără WhatsApp.",
+    },
+    problems: [
+      "Solicitările, fișele și documentele sunt urmărite în mai multe locuri: email, Excel, WhatsApp",
+      "Echipa nu știe statusul unui dosar fără să întrebe pe cineva",
+      "Documentele se generează manual cu copy-paste din Word",
+      "Nu există trasabilitate: cine a modificat ce și când",
+      "Rapoartele operaționale se fac manual la final de lună",
+      "Rolurile și permisiunile nu există — toți văd tot",
+    ],
+    howItHelps: [
+      {
+        title: "Un singur loc pentru tot ce se mișcă în firmă",
+        body: "Fișe, solicitări, documente, statusuri — toate vizibile în același sistem, cu un număr unic per dosar și un flux clar de la deschidere la rezolvare.",
+      },
+      {
+        title: "Documente generate automat, nu copy-paste",
+        body: "Template-uri predefinite completate automat din datele dosarului. PDF-ul e gata în secunde, nu în 20 de minute de copiat date.",
+      },
+      {
+        title: "Rapoarte live, nu la final de lună",
+        body: "Câte dosare deschise, câte rezolvate, timp mediu de rezolvare, performanță per angajat — actualizate automat, nu construite în Excel.",
+      },
+    ],
+    features: [
+      { title: "Dosare și fișe cu număr unic", description: "Fiecare solicitare, fișă sau comandă are un număr unic și un istoric complet." },
+      { title: "Flux de statusuri configurabil", description: "Definești etapele procesului tău: nou → în lucru → aprobat → finalizat → arhivat." },
+      { title: "Generator de documente", description: "Procese verbale, devize, decizii, contracte — generate automat din datele dosarului." },
+      { title: "Roluri și permisiuni granulare", description: "Operatorul vede dosarele lui, managerul vede tot, clientul vede statusul propriu." },
+      { title: "Notificări automate", description: "La schimbare de status, la aprobare, la expirare — echipa și clienții sunt anunțați automat." },
+      { title: "Dashboard operațional", description: "Dosare deschise, timp mediu rezolvare, SLA-uri depășite — vizibile live pentru management." },
+      { title: "Căutare și filtrare avansată", description: "Găsești orice dosar în secunde după client, status, dată, tip sau orice alt câmp." },
+      { title: "Jurnal de modificări", description: "Cine a modificat ce și când — trasabilitate completă, fără blamat la ghici." },
+    ],
+    usedBy: [
+      "Service-uri auto și tehnice",
+      "Firme cu procese de aprobare internă",
+      "Furnizori cu garanții și retururi",
+      "Firme de construcții cu șantiere și documente",
+      "Orice echipă care gestionează volume de dosare sau solicitări",
+    ],
+    examples: [
+      {
+        title: "Service auto cu 3 recepționeri",
+        body: "Fișe auto, stări lucrare, devize generate automat, notificări SMS client la finalizare — înlocuind un Excel și o mapă fizică.",
+      },
+      {
+        title: "Firmă de construcții cu documente de șantier",
+        body: "Procese verbale de recepție, situații de lucrări, ordine de schimbare — generate din template, semnate și arhivate în sistem.",
+      },
+      {
+        title: "Furnizor cu dosar de garanții",
+        body: "Fiecare produs returnat primește un dosar RMA cu flux de aprobare, decizie de garanție generată automat și status vizibil pentru client.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Când merită un back-office custom în loc de un tool SaaS?",
+        a: "Când procesul tău nu se potrivește în cutia unui tool generic. Dacă ai câmpuri specifice industriei tale, fluxuri de aprobare proprii sau documente cu structură proprie — un sistem custom e mai ieftin pe termen lung decât adaptarea continuă la un SaaS.",
+      },
+      {
+        q: "Se poate integra cu emailul firmei?",
+        a: "Da. Emailurile primite pe o adresă dedicată pot crea automat dosare în sistem. Răspunsurile se pot trimite direct din back-office, cu template-uri.",
+      },
+      {
+        q: "Pot defini roluri diferite pentru angajați?",
+        a: "Da. Fiecare utilizator are un rol cu permisiuni clare: ce poate vedea, crea, modifica sau aproba. Poți avea roluri de operator, manager, administrator și chiar acces extern pentru clienți.",
+      },
+      {
+        q: "Pot importa datele existente din Excel sau alt sistem?",
+        a: "Da. Migrarea datelor existente face parte din proces — curățăm, structurăm și importăm tot ce ai acumulat până acum.",
+      },
+      {
+        q: "Pot începe cu un MVP și extind ulterior?",
+        a: "Da — de fapt, asta recomandăm. Pornim cu fluxul principal (dosar → status → document → rezolvare) și adăugăm roluri, integrări și module suplimentare pe parcurs.",
+      },
+      {
+        q: "Cine întreține sistemul după lansare?",
+        a: "Noi. Oferim mentenanță lunară: bug-uri, actualizări de securitate, funcții noi adăugate iterativ. Nu rămâi cu codul în brațe.",
+      },
+    ],
+    relatedSlugs: ["crm-custom", "automatizari-business", "dashboard-rapoarte", "portal-clienti"],
+  },
 };
 
 export { services };

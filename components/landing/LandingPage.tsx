@@ -11,7 +11,7 @@ import { AudienceSection } from "./AudienceSection";
 import { ProcessSection } from "./ProcessSection";
 import { UseCasesSection } from "./UseCasesSection";
 import { LiveMockupsSection } from "./LiveMockupsSection";
-import { BackOfficeSection } from "./BackOfficeSection";
+import { CRMModularSection } from "./CRMModularSection";
 import { TrustSection } from "./TrustSection";
 import { PricingSection } from "./PricingSection";
 import { FAQSection } from "./FAQSection";
@@ -36,7 +36,7 @@ export default function LandingPage() {
       <ProcessSection />
       <UseCasesSection />
       <LiveMockupsSection />
-      <BackOfficeSection />
+      <CRMModularSection />
       <TrustSection />
       <PricingSection />
       <FAQSection />

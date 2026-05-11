@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { MarketingShell } from "./MarketingShell";
 import { FaqAccordion } from "./FaqAccordion";
-import { ServiceContactForm } from "./ServiceContactForm";
+import { PageHero } from "./PageHero";
 import { services, type ServiceConfig } from "@/data/services";
 import { siteConfig } from "@/content/site";
 import {
@@ -18,6 +18,10 @@ import {
   OperationsDashboardMockup,
   ReportsDashboardMockup,
 } from "@/components/marketing/mockups";
+import {
+  getHeroPreview,
+} from "@/components/marketing/hero-previews";
+import { ProjectBriefSection } from "@/components/marketing/cta/index";
 
 const serviceMockups: Record<string, { eyebrow: string; title: string; lead: string; visuals: ReactNode[] }> = {
   "crm-custom": {
@@ -76,11 +80,6 @@ const serviceMockups: Record<string, { eyebrow: string; title: string; lead: str
   },
 };
 
-const Arrow = () => (
-  <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
-    <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 const ArrowRight = () => (
   <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -99,12 +98,12 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
   const relatedServices = service.relatedSlugs
     .map((slug) => services[slug])
     .filter(Boolean);
-  const primaryCta = service.primaryCta ?? siteConfig.ctas.serviceDefault;
-  const secondaryCta = service.secondaryCta ?? siteConfig.ctas.portfolio;
+  const primaryCta = service.primaryCta ?? siteConfig.ctas.primary;
+  const secondaryCta = service.secondaryCta ?? { label: "Vezi exemple de sisteme", href: "/portofoliu" };
   const visibleProblems = service.problems.slice(0, 3);
   const extraProblems = service.problems.slice(3);
   const mockupSet = serviceMockups[service.slug];
-  const heroMockup = mockupSet?.visuals[0];
+  const heroPreview = getHeroPreview(service.slug);
 
   const processSteps = [
     { n: "01", t: "Discutăm problema", d: "O conversație de 30 de minute. Tu îmi spui ce nu funcționează, eu pun întrebări." },
@@ -116,67 +115,18 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
 
   return (
     <MarketingShell>
-      {/* Hero */}
-      <section
-        style={{
-          paddingTop: "calc(var(--s-10) + 40px)",
-          paddingBottom: "var(--s-9)",
-          position: "relative",
-        }}
-      >
-        <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.4 }} />
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div
-            className="pp-visual-hero-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr auto",
-              gap: "var(--s-8)",
-              alignItems: "start",
-            }}
-          >
-            {/* Text */}
-            <div>
-              <div style={{ marginBottom: "var(--s-5)" }}>
-                <span className="chip">
-                  <span className="dot pulse-dot" /> disponibil pentru proiecte noi
-                </span>
-              </div>
-              <h1
-                className="h-display"
-                style={{
-                  maxWidth: 820,
-                  fontSize: "clamp(32px, 5vw, 68px)",
-                  marginBottom: "var(--s-5)",
-                }}
-              >
-                {service.title}
-              </h1>
-              <p className="lead" style={{ maxWidth: 620, color: "var(--fg-2)" }}>
-                {service.heroLead}
-              </p>
-              <p className="body" style={{ maxWidth: 620, color: "var(--fg-3)", marginTop: "var(--s-4)" }}>
-                {service.pageAngle}
-              </p>
-              <div style={{ display: "flex", gap: "var(--s-4)", flexWrap: "wrap", marginTop: "var(--s-6)" }}>
-                <Link href={primaryCta.href} className="btn btn-primary">
-                  {primaryCta.label} <Arrow />
-                </Link>
-                <Link href={secondaryCta.href} className="btn btn-secondary">
-                  {secondaryCta.label} <ArrowRight />
-                </Link>
-              </div>
-            </div>
-
-            {/* Service visual mockup */}
-            {heroMockup && (
-              <div className="pp-only-desktop" style={{ width: "min(540px, 44vw)" }}>
-                {heroMockup}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        chip="disponibil pentru proiecte noi"
+        title={service.title}
+        lead={service.heroLead}
+        sub={service.pageAngle}
+        primaryLabel={primaryCta.label}
+        primaryHref={primaryCta.href}
+        secondaryLabel={secondaryCta.label}
+        secondaryHref={secondaryCta.href}
+        preview={heroPreview}
+        urgencyNote="Disponibil pentru proiecte noi · Răspund în 24h · Fără angajament"
+      />
 
       {mockupSet && (
         <section className="section" style={{ paddingTop: "var(--s-7)", paddingBottom: "var(--s-7)" }}>
@@ -413,6 +363,75 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         </div>
       </section>
 
+      {/* CRM modular vs CRM custom — only for crm-custom page */}
+      {service.slug === "crm-custom" && (
+        <section className="section" style={{ background: "var(--bg-1)" }}>
+          <div className="container">
+            <div className="section-head">
+              <div className="eyebrow-row">
+                <span className="eyebrow">variante disponibile</span>
+                <span className="line" />
+              </div>
+              <h2 className="h-2">CRM custom vs CRM modular vs software de la zero.</h2>
+              <p className="lead" style={{ margin: 0, maxWidth: 600 }}>
+                Nu există o singură variantă corectă. Totul depinde de complexitatea proceselor și de cât de repede vrei să pornești.
+              </p>
+            </div>
+            <div className="grid grid-3" style={{ marginTop: "var(--s-6)" }}>
+              <div className="card card-elev" style={{ display: "flex", flexDirection: "column", gap: "var(--s-3)", borderColor: "var(--accent-line)" }}>
+                <span className="eyebrow" style={{ color: "var(--accent)" }}>CRM modular</span>
+                <h3 className="h-3">Alegi baza și customizăm</h3>
+                <p className="body-sm" style={{ margin: 0, color: "var(--fg-3)" }}>
+                  Pornim de la module deja construite — clienți, lead-uri, tickete, contracte — și le adaptăm pe procesele firmei tale. Implementare mai rapidă, costuri mai mici.
+                </p>
+                <Link href="/crm-modular" className="btn btn-ghost btn-sm" style={{ marginTop: "auto" }}>
+                  Află mai multe →
+                </Link>
+              </div>
+              <div className="card card-elev" style={{ display: "flex", flexDirection: "column", gap: "var(--s-3)" }}>
+                <span className="eyebrow">CRM custom</span>
+                <h3 className="h-3">Construim fluxuri specifice</h3>
+                <p className="body-sm" style={{ margin: 0, color: "var(--fg-3)" }}>
+                  Potrivit când ai fluxuri mai complexe sau nișate, care nu se potrivesc pe o bază modulară standard. Mai mult timp, mai multă flexibilitate.
+                </p>
+                <span className="body-sm" style={{ color: "var(--accent)", marginTop: "auto" }}>Ești deja pe pagina potrivită</span>
+              </div>
+              <div className="card" style={{ display: "flex", flexDirection: "column", gap: "var(--s-3)" }}>
+                <span className="eyebrow">Software de la zero</span>
+                <h3 className="h-3">Pentru cazuri foarte complexe</h3>
+                <p className="body-sm" style={{ margin: 0, color: "var(--fg-3)" }}>
+                  Când procesele sunt atât de specifice încât nicio bază existentă nu se apropie de ce ai nevoie. Cel mai mult timp și resurse, dar control total.
+                </p>
+                <Link href="/aplicatii-web-custom" className="btn btn-ghost btn-sm" style={{ marginTop: "auto" }}>
+                  Aplicații web custom →
+                </Link>
+              </div>
+            </div>
+            <div
+              style={{
+                marginTop: "var(--s-6)",
+                padding: "var(--s-4) var(--s-5)",
+                background: "var(--bg-0)",
+                border: "1px solid var(--line-1)",
+                borderRadius: "var(--radius-2)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "var(--s-4)",
+              }}
+            >
+              <p className="body-sm" style={{ margin: 0, color: "var(--fg-2)" }}>
+                Nu știi ce variantă ți se potrivește? Hai să discutăm.
+              </p>
+              <Link href="/contact" className="btn btn-primary btn-sm">
+                Programează o discuție
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Related services */}
       {relatedServices.length > 0 && (
         <section className="section-pad-sm">
@@ -505,30 +524,12 @@ export function ServicePage({ service }: { service: ServiceConfig }) {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="section pp-final" id="contact">
-        <div className="container">
-          <div className="pp-final-card">
-            <div className="pp-final-grid-bg" />
-            <div className="pp-final-content">
-              <div className="chip" style={{ marginBottom: 24 }}>
-                <span className="dot" /> răspund în 24h, în zilele lucrătoare
-              </div>
-              <h2 className="h-1" style={{ marginBottom: "var(--s-4)" }}>
-                {primaryCta.label}
-              </h2>
-              <p className="lead" style={{ marginBottom: "var(--s-6)" }}>
-                Spune-mi ce problemă vrei să rezolvi. Îți propun o soluție clară și realistă — fără audit de 2 săptămâni.
-              </p>
-              <ServiceContactForm
-                sourcePage={service.sourcePage}
-                ctaText={primaryCta.label}
-                serviceName={service.shortTitle}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProjectBriefSection
+        title={primaryCta.label}
+        sourcePage={service.sourcePage}
+        ctaText={primaryCta.label}
+        serviceName={service.shortTitle}
+      />
     </MarketingShell>
   );
 }

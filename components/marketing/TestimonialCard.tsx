@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 interface TestimonialCardProps {
@@ -36,14 +37,18 @@ export function TestimonialCard({
       <CardContent>
         <div className="flex items-center gap-3">
           {image && (
-            <img
-              src={image}
-              alt={author}
-              className="w-12 h-12 rounded-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
-            />
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
+              <Image
+                src={image}
+                alt={author}
+                fill
+                sizes="48px"
+                className="object-cover"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            </div>
           )}
           <div>
             <p className="font-semibold text-gray-900">{author}</p>

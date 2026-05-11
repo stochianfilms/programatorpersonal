@@ -20,6 +20,7 @@ export interface MediaItem {
 
 const primaryNav: NavItem[] = [
   { label: "Servicii", href: "/servicii" },
+  { label: "Module", href: "/module" },
   { label: "Soluții", href: "/solutii" },
   { label: "Industrii", href: "/industrii" },
   { label: "Portofoliu", href: "/portofoliu" },
@@ -28,7 +29,9 @@ const primaryNav: NavItem[] = [
 ];
 
 const servicesNav: NavItemRich[] = [
+  { label: "CRM modular", href: "/crm-modular", description: "Bază CRM gata, customizată pe firma ta" },
   { label: "CRM custom", href: "/crm-custom", description: "Pipeline, clienți, urmăriri" },
+  { label: "Back-office custom", href: "/back-office-custom", description: "Fișe, tickete, documente, statusuri" },
   { label: "Automatizări business", href: "/automatizari-business", description: "Procese care rulează singure" },
   { label: "Aplicații web custom", href: "/aplicatii-web-custom", description: "Software pe fluxul tău" },
   { label: "Generator contracte", href: "/generator-contracte", description: "Contracte generate în secunde" },
@@ -37,6 +40,7 @@ const servicesNav: NavItemRich[] = [
   { label: "Portal clienți", href: "/portal-clienti", description: "Spațiu privat pentru clienți" },
   { label: "Magazin online custom", href: "/magazin-online-custom", description: "E-commerce pe procesele tale" },
   { label: "Mentenanță software", href: "/mentenanta-software", description: "Aplicația evoluează fără tine" },
+  { label: "Integrări API", href: "/integrari-api", description: "Conectăm sistemele firmei tale" },
 ];
 
 const solutionsNav: NavItemRich[] = [
@@ -59,6 +63,19 @@ const industriesNav: NavItemRich[] = [
   { label: "E-commerce", href: "/software-pentru-ecommerce", description: "Checkout, comenzi, integrări" },
 ];
 
+const modulesNav: NavItemRich[] = [
+  { label: "CRM & Customer 360", href: "/module/crm-customer-360", description: "Toți clienții, toate interacțiunile" },
+  { label: "Ticketing / Helpdesk", href: "/module/ticketing-helpdesk", description: "Solicitări urmărite de la intrare la rezolvare" },
+  { label: "Contract Generator", href: "/module/contract-generator", description: "Contracte corecte în secunde" },
+  { label: "Workflow Automation", href: "/module/workflow-automation", description: "Sarcini repetitive eliminate din rutină" },
+  { label: "Dashboard & BI", href: "/module/dashboard-bi", description: "Datele firmei vizibile live" },
+  { label: "Client Portal", href: "/module/client-portal", description: "Spațiu privat pentru fiecare client" },
+  { label: "Booking Calendar", href: "/module/booking-calendar", description: "Programări online fără telefon" },
+  { label: "RMA / Warranty", href: "/module/rma-warranty", description: "Garanții și retururi fără haos" },
+  { label: "Document Hub", href: "/module/document-hub", description: "Documente găsite în secunde" },
+  { label: "Integrations & API", href: "/integrari-api", description: "Sistemele firmei conectate" },
+];
+
 export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://programatorpersonal.ro",
   brand: {
@@ -66,9 +83,9 @@ export const siteConfig = {
     legalName: null,
     tagline: "Software custom pentru firme care vor să lucreze mai clar.",
     description:
-      "Programator Personal construiește CRM-uri custom, aplicații web și automatizări pentru firme care vor să scape de Excel, WhatsApp și procese manuale.",
+      "CRM modular, back-office-uri și aplicații custom pentru firme care vor să scape de Excel, WhatsApp și procese manuale.",
     shortDescription:
-      "CRM-uri, aplicații web și automatizări construite pe procesele reale ale firmei tale.",
+      "CRM modular și software custom adaptat pe procesele firmei tale.",
     location: "București · România",
   },
   contact: {
@@ -81,14 +98,14 @@ export const siteConfig = {
     location: "București · România",
   },
   ctas: {
-    primary: { label: "Programează o discuție", href: "/contact" },
+    primary: { label: "Programează o discuție de 30 min", href: "/contact" },
     diagnostic: { label: "Spune-mi ce vrei să automatizăm", href: "/contact" },
     estimate: { label: "Cere o estimare", href: "/contact" },
     portfolio: { label: "Vreau un sistem asemănător", href: "/contact" },
     serviceDefault: { label: "Vreau o soluție pentru firma mea", href: "/contact" },
   },
   cta: {
-    primary: "Programează o discuție",
+    primary: "Programează o discuție de 30 min",
     diagnostic: "Spune-mi ce vrei să automatizăm",
     estimate: "Cere o estimare",
     portfolio: "Vreau un sistem asemănător",
@@ -105,6 +122,11 @@ export const siteConfig = {
         lead: "Software construit pe procesele firmei tale.",
         cols: 3,
       },
+      modules: {
+        label: "Module",
+        lead: "Componente individuale pe care le putem adăuga în sistemul tău.",
+        cols: 2,
+      },
       solutions: {
         label: "Soluții",
         lead: "Alege ce problemă vrei să rezolvi.",
@@ -117,6 +139,7 @@ export const siteConfig = {
       },
     },
     services: servicesNav,
+    modules: modulesNav,
     solutions: solutionsNav,
     industries: industriesNav,
     resources: [
@@ -209,11 +232,18 @@ export const siteConfig = {
     staticPages: [
       "/",
       "/servicii",
+      "/module",
+      "/solutii",
+      "/industrii",
       "/preturi",
       "/contact",
-      "/about",
+      "/despre",
+      "/proces",
       "/portofoliu",
       "/blog",
+      "/crm-modular",
+      "/back-office-custom",
+      "/integrari-api",
       "/privacy",
       "/terms",
       "/cookies",
@@ -221,7 +251,7 @@ export const siteConfig = {
   },
   name: "Programator Personal",
   description:
-    "Programator Personal construiește CRM-uri custom, aplicații web și automatizări pentru firme care vor să scape de Excel, WhatsApp și procese manuale.",
+    "CRM modular, back-office-uri și aplicații custom pentru firme care vor să scape de Excel, WhatsApp și procese manuale.",
 };
 
 export type SiteConfig = typeof siteConfig;

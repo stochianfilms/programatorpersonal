@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { siteConfig, type NavItem, type NavItemRich } from "@/content/site";
 
-type MegaKey = "services" | "solutions" | "industries";
+type MegaKey = "services" | "modules" | "solutions" | "industries";
 
 const megaData: Record<
   MegaKey,
@@ -15,6 +15,12 @@ const megaData: Record<
     lead: siteConfig.navigation.megaMenus.services.lead,
     items: siteConfig.navigation.services,
     cols: siteConfig.navigation.megaMenus.services.cols as 3,
+  },
+  modules: {
+    label: siteConfig.navigation.megaMenus.modules.label,
+    lead: siteConfig.navigation.megaMenus.modules.lead,
+    items: siteConfig.navigation.modules,
+    cols: siteConfig.navigation.megaMenus.modules.cols as 2,
   },
   solutions: {
     label: siteConfig.navigation.megaMenus.solutions.label,
@@ -137,7 +143,7 @@ export function MarketingHeader() {
   };
 
   const plainLinks = siteConfig.navigation.primary.filter(
-    (item) => !["Servicii", "Soluții", "Industrii"].includes(item.label)
+    (item) => !["Servicii", "Module", "Soluții", "Industrii"].includes(item.label)
   );
   const primaryCta = siteConfig.ctas.primary;
 

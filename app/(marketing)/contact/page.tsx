@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import { ServiceContactForm } from "@/components/marketing/ServiceContactForm";
 import { siteConfig } from "@/content/site";
-import { ContactBriefMockup } from "@/components/marketing/mockups";
+import { getHeroPreview } from "@/components/marketing/hero-previews";
 
 export const metadata: Metadata = {
   title: "Contact | Programator Personal",
@@ -36,7 +36,7 @@ export default function ContactPage() {
       >
         <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.3 }} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(360px, 540px)", gap: "var(--s-8)", alignItems: "start" }}>
+          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", gap: "var(--s-8)", alignItems: "start" }}>
             <div>
               <div className="chip" style={{ marginBottom: "var(--s-4)" }}>
                 <span className="dot pulse-dot" /> disponibil pentru proiecte noi
@@ -51,22 +51,15 @@ export default function ContactPage() {
                 Completează formularul și îți răspund în 24h cu primele întrebări concrete. Fără oferte generice, fără pitch.
               </p>
             </div>
-            <div className="pp-only-desktop">
-              <ContactBriefMockup />
+            <div className="pp-hero-preview-wrap">
+              {getHeroPreview("contact")}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact brief visual */}
-      <section className="section" style={{ paddingTop: "var(--s-6)", paddingBottom: "var(--s-6)" }}>
-        <div className="container">
-          <ContactBriefMockup />
-        </div>
-      </section>
-
       {/* Main */}
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section" style={{ paddingTop: "var(--s-6)" }}>
         <div className="container">
           <div className="pp-cf">
             {/* Form */}

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { MarketingShell } from "@/components/marketing/MarketingShell";
 import { siteConfig } from "@/content/site";
 import { PricingComplexityMockup } from "@/components/marketing/mockups";
+import { getHeroPreview } from "@/components/marketing/hero-previews";
+import { FinalCTASection, PrimaryCTA, SecondaryCTA } from "@/components/marketing/cta/index";
 
 export const metadata: Metadata = {
   title: "Prețuri | Programator Personal",
@@ -102,7 +104,7 @@ export default function PreturiPage() {
       <section style={{ paddingTop: "calc(var(--s-10) + 40px)", paddingBottom: "var(--s-8)", position: "relative" }}>
         <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.35 }} />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) minmax(360px, 540px)", gap: "var(--s-8)", alignItems: "start" }}>
+          <div className="pp-visual-hero-grid" style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", gap: "var(--s-8)", alignItems: "start" }}>
             <div>
               <div className="chip" style={{ marginBottom: "var(--s-4)" }}>investiție orientativă</div>
               <h1 className="h-display" style={{ maxWidth: 680, fontSize: "clamp(32px, 5vw, 64px)", marginBottom: "var(--s-4)" }}>
@@ -112,24 +114,10 @@ export default function PreturiPage() {
                 Nu e grilă fixă. Sunt 3 forme de colaborare în care intră majoritatea proiectelor. Prețul final îl stabilim împreună, după ce înțelegem exact ce ai nevoie.
               </p>
             </div>
-            <div className="pp-only-desktop">
-              <PricingComplexityMockup />
+            <div className="pp-hero-preview-wrap">
+              {getHeroPreview("preturi")}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Pricing complexity visual */}
-      <section className="section" style={{ paddingTop: "var(--s-7)", paddingBottom: "var(--s-7)" }}>
-        <div className="container">
-          <div className="section-head" style={{ marginBottom: "var(--s-6)" }}>
-            <div className="eyebrow-row">
-              <span className="eyebrow">cum se calculează prețul</span>
-              <span className="line" />
-            </div>
-            <h2 className="h-2">Modulele alese determină prețul. Nu pachetele fixe.</h2>
-          </div>
-          <PricingComplexityMockup />
         </div>
       </section>
 
@@ -158,12 +146,11 @@ export default function PreturiPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/contact"
-                  className={`btn ${t.featured ? "btn-primary" : "btn-secondary"} pp-tier-cta`}
-                >
-                  {t.cta} <Arrow />
-                </Link>
+                {t.featured ? (
+                  <PrimaryCTA label={t.cta} href="/contact" />
+                ) : (
+                  <SecondaryCTA label={t.cta} href="/contact" />
+                )}
               </div>
             ))}
           </div>
@@ -174,6 +161,20 @@ export default function PreturiPage() {
               {siteConfig.ctas.estimate.label} <Arrow />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing complexity visual */}
+      <section className="section" style={{ paddingTop: "var(--s-7)", paddingBottom: "var(--s-7)" }}>
+        <div className="container">
+          <div className="section-head" style={{ marginBottom: "var(--s-6)" }}>
+            <div className="eyebrow-row">
+              <span className="eyebrow">cum se calculează prețul</span>
+              <span className="line" />
+            </div>
+            <h2 className="h-2">Modulele alese determină prețul. Nu pachetele fixe.</h2>
+          </div>
+          <PricingComplexityMockup />
         </div>
       </section>
 
@@ -199,17 +200,12 @@ export default function PreturiPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-pad-sm" style={{ background: "var(--bg-1)" }}>
-        <div className="container" style={{ textAlign: "center" }}>
-          <h2 className="h-2" style={{ marginBottom: "var(--s-3)" }}>Vrei o estimare pentru proiectul tău?</h2>
-          <p className="lead" style={{ marginBottom: "var(--s-5)" }}>
-            Spune-mi ce problemă vrei să rezolvi. Îți răspund în 24h cu o propunere clară.
-          </p>
-          <Link href="/contact" className="btn btn-primary">
-            Cere estimare gratuită <Arrow />
-          </Link>
-        </div>
-      </section>
+      <FinalCTASection
+        title="Vrei o estimare pentru proiectul tău?"
+        text="Spune-mi ce problemă vrei să rezolvi. Îți răspund în 24h cu o propunere clară."
+        primaryLabel="Programează o discuție de 30 min"
+        primaryHref="/contact"
+      />
     </MarketingShell>
   );
 }

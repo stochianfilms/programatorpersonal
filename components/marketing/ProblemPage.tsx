@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MarketingShell } from "./MarketingShell";
 import { FaqAccordion } from "./FaqAccordion";
-import { ServiceContactForm } from "./ServiceContactForm";
+import { PageHero } from "./PageHero";
 import { services } from "@/data/services";
 import type { ProblemPageConfig } from "@/data/problemPages";
 import type { ReactNode } from "react";
@@ -13,6 +13,8 @@ import {
   BookingCalendarMockup,
   ClientPortalMockup,
 } from "@/components/marketing/mockups";
+import { getHeroPreview } from "@/components/marketing/hero-previews";
+import { ProjectBriefSection } from "@/components/marketing/cta/index";
 
 const problemMockups: Record<string, ReactNode> = {
   "scapa-de-excel": <ProblemToSolutionMockup />,
@@ -23,11 +25,6 @@ const problemMockups: Record<string, ReactNode> = {
   "portal-clienti-firma": <ClientPortalMockup />,
 };
 
-const Arrow = () => (
-  <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
-    <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 const ArrowRight = () => (
   <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -40,45 +37,21 @@ export function ProblemPage({ problem }: { problem: ProblemPageConfig }) {
     .map((slug) => services[slug])
     .filter(Boolean);
   const mockup = problemMockups[problem.slug];
+  const heroPreview = getHeroPreview(problem.slug);
 
   return (
     <MarketingShell>
-      {/* Hero */}
-      <section
-        style={{
-          paddingTop: "calc(var(--s-10) + 40px)",
-          paddingBottom: "var(--s-9)",
-          position: "relative",
-        }}
-      >
-        <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.4 }} />
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ marginBottom: "var(--s-5)" }}>
-            <span className="chip">
-              <span className="dot" /> problemă operațională
-            </span>
-          </div>
-          <h1
-            className="h-display"
-            style={{
-              maxWidth: 820,
-              fontSize: "clamp(32px, 5vw, 68px)",
-              marginBottom: "var(--s-5)",
-            }}
-          >
-            {problem.title}
-          </h1>
-          <p className="lead" style={{ maxWidth: 620, color: "var(--fg-2)", marginBottom: "var(--s-4)" }}>
-            {problem.heroLead}
-          </p>
-          <p className="body" style={{ maxWidth: 620, color: "var(--fg-3)", marginBottom: "var(--s-6)" }}>
-            {problem.problemStatement}
-          </p>
-          <Link href="/contact" className="btn btn-primary">
-            {problem.ctaText} <Arrow />
-          </Link>
-        </div>
-      </section>
+      <PageHero
+        chip="problemă operațională"
+        title={problem.title}
+        lead={problem.heroLead}
+        sub={problem.problemStatement}
+        primaryLabel={problem.ctaText}
+        primaryHref="/contact"
+        showSecondary={false}
+        preview={heroPreview}
+        urgencyNote="Disponibil pentru proiecte noi · Răspund în 24h · Fără angajament"
+      />
 
       {/* Problem mockup visual */}
       {mockup && (
@@ -243,7 +216,7 @@ export function ProblemPage({ problem }: { problem: ProblemPageConfig }) {
           <div className="section-head">
             <div className="eyebrow-row">
               <span className="num">05</span>
-              <span className="eyebrow">exemplu real</span>
+              <span className="eyebrow">scenariu practic</span>
               <span className="line" />
             </div>
             <h2 className="h-1">Cum arată în practică.</h2>
@@ -275,30 +248,42 @@ export function ProblemPage({ problem }: { problem: ProblemPageConfig }) {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="section pp-final" id="contact">
-        <div className="container">
-          <div className="pp-final-card">
-            <div className="pp-final-grid-bg" />
-            <div className="pp-final-content">
-              <div className="chip" style={{ marginBottom: 24 }}>
-                <span className="dot" /> răspund în 24h, în zilele lucrătoare
+      {problem.slug === "gestiune-clienti-firma" && (
+        <section className="section-pad-sm">
+          <div className="container">
+            <div
+              style={{
+                padding: "var(--s-5) var(--s-6)",
+                background: "var(--accent-soft)",
+                border: "1px solid var(--accent-line)",
+                borderRadius: "var(--radius-2)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "var(--s-4)",
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--s-2)" }}>
+                <span className="eyebrow" style={{ color: "var(--accent)" }}>Alternativă rapidă</span>
+                <p className="body-sm" style={{ margin: 0, color: "var(--fg-2)", maxWidth: 500 }}>
+                  Vrei să organizezi toți clienții fără să construiești totul de la zero? CRM-ul modular pornește de la o bază deja gândită — adaptată pe procesele firmei tale.
+                </p>
               </div>
-              <h2 className="h-1" style={{ marginBottom: "var(--s-4)" }}>
-                {problem.ctaText}
-              </h2>
-              <p className="lead" style={{ marginBottom: "var(--s-6)" }}>
-                Spune-mi ce problemă vrei să rezolvi. Îți propun o soluție clară și realistă — fără audit de 2 săptămâni.
-              </p>
-              <ServiceContactForm
-                sourcePage={problem.slug}
-                ctaText={problem.ctaText}
-                serviceName={problem.title}
-              />
+              <Link href="/crm-modular" className="btn btn-primary btn-sm">
+                Descoperă CRM-ul modular →
+              </Link>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      <ProjectBriefSection
+        title={problem.ctaText}
+        sourcePage={problem.slug}
+        ctaText={problem.ctaText}
+        serviceName={problem.title}
+      />
     </MarketingShell>
   );
 }

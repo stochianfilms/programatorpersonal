@@ -294,7 +294,7 @@ export function HeroSection() {
             <span style={{ color: "var(--accent)" }}> full-time.</span>
           </h1>
           <p className="lead pp-hero-sub reveal reveal-3">
-            Construim aplicații web, CRM-uri, automatizări și platforme interne pentru firme care vor să lucreze mai clar, mai rapid și mai organizat. Tu spui problema, eu propun soluția.
+            CRM modular, back-office-uri și aplicații custom pentru firme care vor să scape de Excel, WhatsApp și procese manuale. Pornim de la ce ai nevoie, nu de la zero.
           </p>
           <div className="pp-hero-ctas reveal reveal-4">
             <a href={siteConfig.ctas.diagnostic.href} className="btn btn-primary">

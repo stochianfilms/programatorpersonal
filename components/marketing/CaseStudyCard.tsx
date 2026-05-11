@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -30,13 +31,15 @@ export function CaseStudyCard({
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       {featuredImage && (
-        <div className="h-48 bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center">
-          <img
+        <div className="relative h-48 bg-gradient-to-br from-blue-400 to-purple-600">
+          <Image
             src={featuredImage}
             alt={title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
             onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
+              (e.currentTarget as HTMLImageElement).style.display = 'none';
             }}
           />
         </div>

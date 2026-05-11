@@ -1,4 +1,5 @@
 import Sidebar from "@/components/layout/Sidebar";
+import { ReactQueryProvider } from "@/components/providers/ReactQueryProvider";
 
 export default function ProtectedLayout({
   children,
@@ -6,9 +7,11 @@ export default function ProtectedLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen bg-slate-50 md:flex">
-      <Sidebar />
-      <main className="flex-1 p-4 md:p-8">{children}</main>
-    </div>
+    <ReactQueryProvider>
+      <div className="min-h-screen bg-slate-50 md:flex">
+        <Sidebar />
+        <main className="flex-1 p-4 md:p-8">{children}</main>
+      </div>
+    </ReactQueryProvider>
   );
 }

@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { MarketingShell } from "./MarketingShell";
 import { FaqAccordion } from "./FaqAccordion";
-import { ServiceContactForm } from "./ServiceContactForm";
+import { PageHero } from "./PageHero";
 import { services } from "@/data/services";
 import type { IndustryPageConfig } from "@/data/industryPages";
 import {
   EcommerceOpsMockup,
   IndustrySystemMockup,
   OperationsDashboardMockup,
-  ServiceTicketDashboardMockup,
   WarrantyRmaMockup,
   type IndustryVariant,
 } from "@/components/marketing/mockups";
+import { getHeroPreview } from "@/components/marketing/hero-previews";
+import { ProjectBriefSection } from "@/components/marketing/cta/index";
 
 const slugToVariant: Record<string, IndustryVariant> = {
   "software-pentru-service-uri": "service-uri",
@@ -24,11 +25,6 @@ const slugToVariant: Record<string, IndustryVariant> = {
   "software-pentru-ecommerce": "ecommerce",
 };
 
-const Arrow = () => (
-  <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
-    <path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 const ArrowRight = () => (
   <svg width={14} height={14} viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -41,66 +37,20 @@ export function IndustryPage({ industry }: { industry: IndustryPageConfig }) {
     .map((slug) => services[slug])
     .filter(Boolean);
   const mockupVariant = slugToVariant[industry.slug];
-  const heroVisual = industry.slug === "software-pentru-service-uri"
-    ? <ServiceTicketDashboardMockup />
-    : industry.slug === "software-pentru-ecommerce"
-      ? <EcommerceOpsMockup />
-      : mockupVariant
-        ? <IndustrySystemMockup variant={mockupVariant} />
-        : null;
+  const heroPreview = getHeroPreview(industry.slug);
 
   return (
     <MarketingShell>
-      {/* Hero */}
-      <section
-        style={{
-          paddingTop: "calc(var(--s-10) + 40px)",
-          paddingBottom: "var(--s-9)",
-          position: "relative",
-        }}
-      >
-        <div className="bg-grid" style={{ position: "absolute", inset: 0, opacity: 0.4 }} />
-        <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div
-            className="pp-visual-hero-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: heroVisual ? "minmax(0, 1fr) minmax(360px, 540px)" : "1fr",
-              gap: "var(--s-8)",
-              alignItems: "start",
-            }}
-          >
-            <div>
-              <div style={{ marginBottom: "var(--s-5)" }}>
-                <span className="chip">
-                  <span className="dot pulse-dot" /> {industry.industryName}
-                </span>
-              </div>
-              <h1
-                className="h-display"
-                style={{
-                  maxWidth: 820,
-                  fontSize: "clamp(32px, 5vw, 68px)",
-                  marginBottom: "var(--s-5)",
-                }}
-              >
-                {industry.title}
-              </h1>
-              <p className="lead" style={{ maxWidth: 620, color: "var(--fg-2)", marginBottom: "var(--s-6)" }}>
-                {industry.heroLead}
-              </p>
-              <Link href="/contact" className="btn btn-primary">
-                {industry.ctaText} <Arrow />
-              </Link>
-            </div>
-            {heroVisual && (
-              <div className="pp-only-desktop" style={{ width: "100%" }}>
-                {heroVisual}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <PageHero
+        chip={industry.industryName}
+        title={industry.title}
+        lead={industry.heroLead}
+        primaryLabel={industry.ctaText}
+        primaryHref="/contact"
+        showSecondary={false}
+        preview={heroPreview}
+        urgencyNote="Disponibil pentru proiecte noi · Răspund în 24h · Fără angajament"
+      />
 
       {/* System mockup visual */}
       {industry.slug === "software-pentru-service-uri" ? (
@@ -318,30 +268,44 @@ export function IndustryPage({ industry }: { industry: IndustryPageConfig }) {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="section pp-final" id="contact">
-        <div className="container">
-          <div className="pp-final-card">
-            <div className="pp-final-grid-bg" />
-            <div className="pp-final-content">
-              <div className="chip" style={{ marginBottom: 24 }}>
-                <span className="dot" /> răspund în 24h, în zilele lucrătoare
+      {industry.slug === "software-pentru-service-uri" && (
+        <section className="section-pad-sm">
+          <div className="container">
+            <div
+              style={{
+                padding: "var(--s-5) var(--s-6)",
+                background: "var(--accent-soft)",
+                border: "1px solid var(--accent-line)",
+                borderRadius: "var(--radius-2)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "var(--s-4)",
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: "var(--s-2)" }}>
+                <span className="eyebrow" style={{ color: "var(--accent)" }}>Pornire mai rapidă</span>
+                <p className="body-sm" style={{ margin: 0, color: "var(--fg-2)", maxWidth: 500 }}>
+                  Vrei să pornești repede cu un sistem pentru service? Descoperă CRM-ul modular — o bază pre-construită cu fișe, ticketing și back-office, customizată pe procesele tale.
+                </p>
+                <div style={{ display: "flex", gap: "var(--s-3)", flexWrap: "wrap", marginTop: "var(--s-1)" }}>
+                  <Link href="/crm-modular" className="btn btn-primary btn-sm">CRM modular →</Link>
+                  <Link href="/back-office-custom" className="btn btn-ghost btn-sm">Back-office custom →</Link>
+                </div>
               </div>
-              <h2 className="h-1" style={{ marginBottom: "var(--s-4)" }}>
-                {industry.ctaText}
-              </h2>
-              <p className="lead" style={{ marginBottom: "var(--s-6)" }}>
-                Spune-mi cum lucrezi acum în {industry.industryName}. Îți propun un sistem construit pe procesele tale reale.
-              </p>
-              <ServiceContactForm
-                sourcePage={industry.slug}
-                ctaText={industry.ctaText}
-                serviceName={industry.title}
-              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      <ProjectBriefSection
+        title={industry.ctaText}
+        text={`Spune-mi cum lucrezi acum în ${industry.industryName}. Îți propun un sistem construit pe procesele tale reale.`}
+        sourcePage={industry.slug}
+        ctaText={industry.ctaText}
+        serviceName={industry.title}
+      />
     </MarketingShell>
   );
 }

@@ -2,7 +2,11 @@ export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';
 import { siteConfig } from '@/content/site';
-import { getServices, getCaseStudies, getBlogArticles } from '@/lib/db';
+import { services } from '@/data/services';
+import { problemPages } from '@/data/problemPages';
+import { industryPages } from '@/data/industryPages';
+import { modules } from '@/data/modules';
+import { getCaseStudies, getBlogArticles } from '@/lib/db';
 
 function escapeXml(str: string) {
   return str
@@ -18,14 +22,17 @@ export async function GET() {
 
   const pages = new Set<string>(siteConfig.sitemap.staticPages);
 
+  Object.keys(services).forEach((slug) => pages.add(`/${slug}`));
+  Object.keys(problemPages).forEach((slug) => pages.add(`/${slug}`));
+  Object.keys(industryPages).forEach((slug) => pages.add(`/${slug}`));
+  Object.keys(modules).forEach((slug) => pages.add(`/module/${slug}`));
+
   try {
-    const [services, caseStudies, articles] = await Promise.all([
-      getServices(),
+    const [caseStudies, articles] = await Promise.all([
       getCaseStudies(),
       getBlogArticles(100),
     ]);
 
-    services.forEach((s: { slug?: string }) => { if (s?.slug) pages.add(`/servicii/${s.slug}`); });
     caseStudies.forEach((c: { slug?: string }) => { if (c?.slug) pages.add(`/portofoliu/${c.slug}`); });
     articles.forEach((a: { slug?: string }) => { if (a?.slug) pages.add(`/blog/${a.slug}`); });
   } catch (err) {
